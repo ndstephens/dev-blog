@@ -1,0 +1,29 @@
+---
+title: TypeScript Basics 101
+excerpt: The first in a set of TypeScript lessons
+date: 2022-07-01
+tags:
+  - typescript
+---
+
+Duis adipisicing officia enim nulla aliquip adipisicing. Aute Lorem quis commodo est sit est elit aliquip commodo reprehenderit commodo ipsum. Voluptate officia nostrud incididunt enim consequat sint laborum nisi ullamco elit eu nulla non.
+
+## First H2
+
+Exercitation qui laborum et pariatur laborum officia fugiat dolor ad pariatur sunt tempor mollit aliqua. Sint commodo incididunt officia mollit aute nostrud incididunt ullamco cillum ipsum labore id. Aute amet consectetur nostrud cillum in nostrud ullamco sint culpa anim duis veniam. Do qui proident Lorem proident est ipsum ad aute. Aliqua amet ex duis mollit.
+
+### First H3
+
+Deserunt in nulla non ipsum elit est voluptate voluptate. Ex pariatur est consequat esse commodo. Ex magna laboris deserunt do nulla commodo. Mollit magna ea consequat dolore pariatur qui sunt quis. Commodo elit adipisicing proident occaecat cupidatat aute cupidatat irure. Minim excepteur do sit amet incididunt. Mollit ullamco veniam proident magna pariatur.
+
+## Second H2
+
+```ts
+export const getAllPostPaths = (): string[] => {
+  const paths = sync(`${POSTS_PATH}/**/*.mdx`);
+
+  console.log(paths);
+
+  return paths;
+};
+```

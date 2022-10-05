@@ -6,19 +6,44 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:eslint": "eslint . --ext js,jsx,ts,tsx,md,mdx --ignore-path .gitignore --fix",
+    "format": "prettier . --ignore-path .gitignore -wu",
+    "test": "console.log('setup tests')",
+    "prepare": "husky install"
+  },
+  "prettier": {
+    "singleQuote": true
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,md,mdx}": "eslint --fix",
+    "*": "prettier -wu"
   },
   "dependencies": {
+    "@fontsource/montserrat": "^4.5.13",
+    "@fontsource/red-hat-mono": "^4.5.11",
+    "@fontsource/vollkorn": "^4.5.12",
+    "glob": "^8.0.3",
+    "gray-matter": "^4.0.3",
     "next": "12.3.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
+    "@types/glob": "^8.0.0",
     "@types/node": "18.8.0",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
+    "@types/styled-components": "^5.1.26",
     "eslint": "8.24.0",
     "eslint-config-next": "12.3.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-mdx": "^2.0.5",
+    "eslint-plugin-simple-import-sort": "^8.0.0",
+    "husky": "^7.0.0",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
     "typescript": "4.8.4"
   }
 }
