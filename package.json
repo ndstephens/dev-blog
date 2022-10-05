@@ -9,7 +9,7 @@
     "lint": "next lint",
     "lint:eslint": "eslint . --ext js,jsx,ts,tsx,md,mdx --ignore-path .gitignore --fix",
     "format": "prettier . --ignore-path .gitignore -wu",
-    "test": "console.log('setup tests')",
+    "test": "echo 'setup tests'",
     "prepare": "husky install"
   },
   "prettier": {
