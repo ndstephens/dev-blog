@@ -1,25 +1,24 @@
 /* =============================================
-              CATEGORIES - TAGS
+            POST TYPES AND TOPICS
 ============================================= */
-export const categories: PostCategory[] = ['notes', 'quickies', 'snippets'];
+export const postTypes: PostType[] = ['note', 'snippet'];
 
-export const tags: PostTag[] = [
-  'typescript',
-  'react',
-  'redux',
-  'next',
-  'javascript',
-  'git',
-  'css',
-  'animation',
-  'framer-motion',
-  'styled-components',
-  'testing',
+export const postTopics: PostTopic[] = [
   'accessibility',
+  'animation',
+  'css',
+  'git',
+  'javascript',
+  'next',
+  'performance',
+  'react',
+  'state',
+  'testing',
+  'typescript',
 ];
 
 /* =============================================
-                  TYPES
+                  TS-TYPES
 ============================================= */
 export interface Post {
   content: string;
@@ -29,24 +28,23 @@ export interface Post {
 export interface PostMeta {
   slug: string;
   title: string;
-  excerpt: string;
+  description: string;
   date: string;
-  category: PostCategory;
-  tags: PostTag[];
+  type: PostType;
+  topics: PostTopic[];
 }
 
-export type PostCategory = 'notes' | 'quickies' | 'snippets';
+export type PostType = 'note' | 'snippet';
 
-export type PostTag =
-  | 'typescript'
-  | 'react'
-  | 'redux'
-  | 'next'
-  | 'javascript'
-  | 'git'
-  | 'css'
+export type PostTopic =
+  | 'accessibility'
   | 'animation'
-  | 'framer-motion'
-  | 'styled-components'
+  | 'css'
+  | 'git'
+  | 'javascript'
+  | 'next'
+  | 'performance'
+  | 'react'
+  | 'state'
   | 'testing'
-  | 'accessibility';
+  | 'typescript';
