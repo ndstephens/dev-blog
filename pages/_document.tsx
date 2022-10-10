@@ -8,6 +8,7 @@ import Document, {
 import { ServerStyleSheet } from 'styled-components';
 
 export default class MyDocument extends Document {
+  // TODO: is this shit still needed?  At least in dev it's loading all styles in "GlobalStyles" twice
   static async getInitialProps(ctx: DocumentContext) {
     const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;

@@ -3,6 +3,7 @@ import type { AppProps, NextWebVitalsMetric } from 'next/app';
 import Head from 'next/head';
 import { ThemeProvider } from 'styled-components';
 
+import { AppLayout } from 'src/components/AppLayout';
 import GlobalStyles from 'src/styles/GlobalStyles';
 import { theme } from 'src/styles/theme';
 // import ErrorBoundary from 'src/components/ErrorBoundary';
@@ -13,6 +14,7 @@ import '@fontsource/montserrat/variable.css';
 import '@fontsource/red-hat-mono/variable.css';
 import '@fontsource/vollkorn/variable.css';
 import '@fontsource/vollkorn/variable-italic.css';
+import 'src/styles/globalVariables.css';
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -24,10 +26,12 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
       </Head>
-      <GlobalStyles />
       <ThemeProvider theme={theme}>
+        <GlobalStyles />
         {/* <ErrorBoundary> */}
-        <Component {...pageProps} />
+        <AppLayout>
+          <Component {...pageProps} />
+        </AppLayout>
         {/* </ErrorBoundary> */}
       </ThemeProvider>
     </>

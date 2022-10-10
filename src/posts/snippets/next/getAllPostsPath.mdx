@@ -1,0 +1,19 @@
+---
+title: getAllPostPath snippet
+excerpt: Snippet of using getAllPostPath function in Next.js
+date: 2022-08-01
+category: snippet
+tags:
+  - next
+---
+
+Duis adipisicing officia enim nulla aliquip adipisicing. Aute Lorem quis commodo est sit est elit aliquip commodo reprehenderit commodo ipsum. Voluptate officia nostrud incididunt enim consequat sint laborum nisi ullamco elit eu nulla non.
+
+## First H2
+
+```ts
+const getAllPostPaths = (): string[] => {
+  const paths = sync(`${POSTS_PATH}/**/*.mdx`);
+  return paths;
+};
+```

@@ -1,0 +1,1 @@
+export { MaxWidthWrapper } from './MaxWidthWrapper';
