@@ -4,13 +4,13 @@ import styled, { css } from 'styled-components';
 interface ActiveLinkProps {
   name: string;
   href: string;
-  path: string;
+  isActive: boolean;
 }
 
-export function ActiveLink({ name, href, path }: ActiveLinkProps) {
+export function ActiveLink({ name, href, isActive }: ActiveLinkProps) {
   return (
     <Link href={href} passHref>
-      <StyledLink isActive={href === path}>{name}</StyledLink>
+      <StyledLink isActive={isActive}>{name}</StyledLink>
     </Link>
   );
 }

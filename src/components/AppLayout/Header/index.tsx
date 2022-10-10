@@ -1,26 +1,28 @@
 import styled from 'styled-components';
 
 import { Logo } from 'src/components/AppLayout/Header/Logo';
-import { NavDesktop } from 'src/components/NavDesktop';
+import { NavDesktop } from 'src/components/AppLayout/Header/NavDesktop';
+import { SocialIcons } from 'src/components/AppLayout/Header/SocialIcons';
 import { MaxWidthWrapper } from 'src/components/shared';
 
 export function Header() {
   return (
-    <Container>
+    <HeaderContainer>
       <MaxWidthWrapper>
-        <HeaderWrapper>
+        <ContentWrapper>
           <Logo />
           <NavDesktop />
-        </HeaderWrapper>
+          <SocialIcons />
+        </ContentWrapper>
       </MaxWidthWrapper>
-    </Container>
+    </HeaderContainer>
   );
 }
 
 /* =============================================
                 STYLED-COMPONENTS
 ============================================= */
-const Container = styled.div`
+const HeaderContainer = styled.header`
   width: 100%;
   position: sticky;
   top: 0;
@@ -29,9 +31,9 @@ const Container = styled.div`
   z-index: 10;
 `;
 
-const HeaderWrapper = styled.header`
+const ContentWrapper = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: baseline;
+  align-items: center;
 `;
