@@ -8,7 +8,7 @@ interface AppLayoutProps {
 export function AppLayout({ children }: AppLayoutProps) {
   return (
     <>
-      <Header></Header>
+      <Header />
       <Main>{children}</Main>
     </>
   );
