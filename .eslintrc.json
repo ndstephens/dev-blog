@@ -6,8 +6,9 @@
     "mdx/code-blocks": true
   },
   "rules": {
-    "react/no-unescaped-entities": "off",
+    "no-unused-vars": "warn",
     "no-console": "warn",
+    "react/no-unescaped-entities": "off",
     // SIMPLE-IMPORT-SORT
     "simple-import-sort/imports": [
       "error",
