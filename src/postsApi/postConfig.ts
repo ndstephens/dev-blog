@@ -1,7 +1,7 @@
 /* =============================================
             POST TYPES AND TOPICS
 ============================================= */
-export const postTypes: PostType[] = ['note', 'snippet'];
+export const postTypes: PostType[] = ['notes', 'snippets'];
 
 export const postTopics: PostTopic[] = [
   'accessibility',
@@ -34,7 +34,7 @@ export interface PostMeta {
   topics: PostTopic[];
 }
 
-export type PostType = 'note' | 'snippet';
+export type PostType = 'notes' | 'snippets';
 
 export type PostTopic =
   | 'accessibility'

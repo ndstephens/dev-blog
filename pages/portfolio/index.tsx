@@ -1,7 +1,3 @@
-import type { NextPage } from 'next';
-
-const PortfolioPage: NextPage = () => {
+export default function PortfolioPage() {
   return <h1>Portfolio Page</h1>;
-};
-
-export default PortfolioPage;
+}

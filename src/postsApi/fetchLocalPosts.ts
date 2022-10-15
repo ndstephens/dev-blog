@@ -26,27 +26,22 @@ const POSTS_PATH = 'src/posts';
 export const getAllPosts = async (): Promise<Post[]> => {
   const allPostsPaths = await getAllPostPaths();
   const allPosts = await getAllPostsFromPathList(allPostsPaths);
-  const allPostsSorted = allPosts.sort(sortPostsByDate);
-  return allPostsSorted;
+  return allPosts;
 };
 
 // GET ALL POSTS BY TYPE
 export const getAllPostsByType = async (type: PostType): Promise<Post[]> => {
   const allPostPathsByType = await getAllPostPathsByPostType(type);
   const allPostsByType = await getAllPostsFromPathList(allPostPathsByType);
-  const allPostsByTypeSorted = allPostsByType.sort(sortPostsByDate);
-  return allPostsByTypeSorted;
+  return allPostsByType;
 };
 
-// FILTER POSTS BY TOPICS
-export const filterPostsByTopics = (
-  filterTopics: PostTopic[],
-  posts: Post[]
-): Post[] => {
-  const postsByTopics = posts.filter((post) =>
-    filterTopics.every((filterTopic) => post.meta.topics.includes(filterTopic))
+// GET ALL POST TOPICS IN USE
+export const getAllPostTopicsInUse = (posts: Post[]): PostTopic[] => {
+  const postTopicsSet = new Set<PostTopic>(
+    posts.map((post) => post.meta.topics).flat()
   );
-  return postsByTopics;
+  return Array.from(postTopicsSet);
 };
 
 // GET POST FROM SLUG
@@ -62,18 +57,36 @@ export const filterPostsByTopics = (
 //   return getPostFromPath(postPath);
 // };
 
-// GET ALL POSTS BY TOPIC
-// const getAllPostsByTopic = async (topic: PostTopic): Promise<Post[]> => {
-//   const allPostsPaths = getAllPostPaths();
-//   const allPosts = getAllPostsFromPathList(allPostsPaths);
-//   const allPostsByTopic = filterPostsByTopics([topic], allPosts).sort(
-//     sortPostsByDate
+/* =============================================
+          SORTING / FILTERING / ETC
+============================================= */
+
+// SORT POSTS BY DATE - RECENT FIRST
+export const sortPostsByDate = (a: Post, b: Post) => {
+  if (a.meta.date < b.meta.date) return 1;
+  if (a.meta.date > b.meta.date) return -1;
+  return 0;
+};
+
+// EXTRACT POST META
+export const extractPostMeta = (post: Post) => post.meta;
+
+// FILTER POST BY TOPIC
+export const filterPostByTopic = (post: Post, topic: PostTopic) =>
+  post.meta.topics.includes(topic);
+
+// export const filterPostsByTopics = (
+//   filterTopics: PostTopic[],
+//   posts: Post[]
+// ): Post[] => {
+//   const postsByTopics = posts.filter((post) =>
+//     filterTopics.every((filterTopic) => post.meta.topics.includes(filterTopic))
 //   );
-//   return allPostsByTopic;
+//   return postsByTopics;
 // };
 
 /* =============================================
-                UTIL FUNCTIONS
+                GET FUNCTIONS
 ============================================= */
 
 // GET ALL POST PATHS
@@ -122,13 +135,6 @@ const getPostFromPath = async (postPath: string): Promise<Post> => {
   }
 };
 
-// SORT POSTS BY DATE - RECENT FIRST
-const sortPostsByDate = (a: Post, b: Post) => {
-  if (a.meta.date < b.meta.date) return 1;
-  if (a.meta.date > b.meta.date) return -1;
-  return 0;
-};
-
 // GET SLUG FROM PATH
 const getSlugFromPath = (postPath: string): string => {
   const pathParts = postPath.split('/');
@@ -141,6 +147,7 @@ const getSlugFromPath = (postPath: string): string => {
           TEST / VALIDATION FUNCTIONS
 ============================================= */
 
+// TODO: probably shouldn't run this during the build. Will be run way too often. Instead run on a test
 // VERIFY STRUCTURE AND DATA-TYPES OF POST (gray-matter response)
 interface PostLike {
   content: string;

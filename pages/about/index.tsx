@@ -1,7 +1,3 @@
-import type { NextPage } from 'next';
-
-const AboutPage: NextPage = () => {
+export default function AboutPage() {
   return <h1>About Page</h1>;
-};
-
-export default AboutPage;
+}

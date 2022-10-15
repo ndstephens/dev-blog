@@ -3,6 +3,8 @@
 /**==============================================*/
 
 :root {
+  /*? FONTS */
+
   /** FONT FAMILY */
   --ff-serif: 'VollkornVariable', serif;
   --ff-sans-serif: 'MontserratVariable', sans-serif;
@@ -15,22 +17,41 @@
   --fw-medium: 500;
   --fw-light: 400;
 
-  /** COLORS */
-  /* GRAYS */
-  --color-gray100: hsl(210, 15%, 20%);
-  --color-gray200: hsl(210, 15%, 25%);
-  --color-gray300: hsl(210, 10%, 40%);
-  --color-gray400: hsl(210, 9%, 45%);
-  --color-gray500: hsl(210, 8%, 50%);
-  --color-gray600: hsl(210, 12%, 55%);
-  --color-gray700: hsl(210, 14%, 66%);
-  --color-gray800: hsl(210, 25%, 88%);
-  --color-gray900: hsl(210, 25%, 96%);
+  /*? COLORS */
 
   /** LIGHT MODE */
-  --color-text-body: black;
-  --color-text-body-dimmed: var(--color-gray400);
-  --color-background-body: white;
+  /* GRAYS */
+  --color-gray-000: #fff;
+  --color-gray-100: hsl(225, 25%, 95%);
+  --color-gray-200: hsl(225, 16%, 90%);
+  --color-gray-300: hsl(225, 8%, 80%);
+  --color-gray-400: hsl(225, 8%, 70%);
+  --color-gray-500: hsl(225, 7%, 60%);
+  --color-gray-600: hsl(225, 15%, 50%);
+  --color-gray-700: hsl(225, 12%, 40%);
+  --color-gray-800: hsl(225, 25%, 20%);
+  --color-gray-900: hsl(225, 15%, 15%);
+  --color-gray-1000: #000;
+
+  --color-text-body: hsl(222deg, 22%, 5%);
+  --color-text-body-dimmed: var(--color-gray-600);
+  --color-background-body: var(--color-gray-000);
+  --color-background-body-dimmed: var(--color-gray-100);
+
+  /** DARK MODE */
+  /* GRAYS */
+  /* --color-gray-000: #000;
+  --color-gray-100: hsl(210, 15%, 20%);
+  --color-gray-200: hsl(210, 15%, 25%);
+  --color-gray-300: hsl(210, 10%, 40%);
+  --color-gray-400: hsl(210, 9%, 45%);
+  --color-gray-500: hsl(210, 8%, 50%);
+  --color-gray-600: hsl(210, 12%, 55%);
+  --color-gray-700: hsl(210, 14%, 66%);
+  --color-gray-800: hsl(210, 25%, 88%);
+  --color-gray-900: hsl(210, 25%, 96%);
+  --color-gray-1000: #fff; */
+
   /* --color-blurred-background: hsla(210, 30%, 8%, 0.85); */
   /* --color-primary: hsl(230, 100%, 67%); */
   /* --color-secondary: hsl(333, 100%, 52%); */
@@ -71,8 +92,12 @@
   /* --prefers-dark: true; */
 
   /** LAYOUT */
-  --content-wrapper-max-width: 1100px;
+  --content-wrapper-max-width: 1024px;
   --content-wrapper-padding-inline: 32px;
+
+  /** HEADER */
+  --header-row-height: 48px;
+  --header-gap: 2px;
 }
 
 /**================================================
