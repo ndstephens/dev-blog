@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-
 import { MaxWidthWrapper } from 'src/components/shared';
+
+import { container } from './Main.module.scss';
 
 interface MainProps {
   children: React.ReactNode;
@@ -8,17 +8,8 @@ interface MainProps {
 
 export function Main({ children }: MainProps) {
   return (
-    <MainContainer>
+    <div className={container}>
       <MaxWidthWrapper>{children}</MaxWidthWrapper>
-    </MainContainer>
+    </div>
   );
 }
-
-/* =============================================
-                STYLED-COMPONENTS
-============================================= */
-const MainContainer = styled.main`
-  width: 100%;
-  position: relative;
-  z-index: 5;
-`;

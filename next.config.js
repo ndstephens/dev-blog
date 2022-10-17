@@ -2,9 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  compiler: {
-    styledComponents: true,
-  },
   // trailingSlash: true,
   webpack(config) {
     config.module.rules.push({

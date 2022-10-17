@@ -1,0 +1,16 @@
+.container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin-inline-start: auto;
+}
+
+.link {
+  padding: 10px;
+  color: var(--color-text-body);
+
+  svg {
+    width: 24px;
+    max-width: 24px;
+  }
+}

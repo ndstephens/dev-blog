@@ -1,45 +1,27 @@
-import styled from 'styled-components';
-
 import GithubIcon from 'src/assets/icons/github.svg';
 import LinkedInIcon from 'src/assets/icons/linkedin.svg';
 
+import { container, link } from './SocialIcons.module.scss';
+
 export function SocialIcons() {
   return (
-    <Container>
-      <IconWrapper
+    <div className={container}>
+      <a
         href="https://github.com/ndstephens"
         target="_blank"
         rel="noreferrer"
+        className={link}
       >
         <GithubIcon />
-      </IconWrapper>
-      <IconWrapper
+      </a>
+      <a
         href="https://www.linkedin.com/in/ndstephens/"
         target="_blank"
         rel="noreferrer"
+        className={link}
       >
         <LinkedInIcon />
-      </IconWrapper>
-    </Container>
+      </a>
+    </div>
   );
 }
-
-/* =============================================
-                STYLED-COMPONENTS
-============================================= */
-const Container = styled.div`
-  height: 100%;
-  display: flex;
-  align-items: center;
-  margin-inline-start: auto;
-`;
-
-const IconWrapper = styled.a`
-  padding: 10px;
-  color: var(--color-text-body);
-
-  svg {
-    width: 24px;
-    max-width: 24px;
-  }
-`;

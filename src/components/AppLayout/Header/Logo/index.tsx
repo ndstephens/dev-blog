@@ -1,26 +1,11 @@
 import Link from 'next/link';
-import styled from 'styled-components';
+
+import { wrapper } from './Logo.module.scss';
 
 export function Logo() {
   return (
-    <Link href="/" passHref>
-      <LogoLink>
-        <LogoWrapper>Nate Stephens</LogoWrapper>
-      </LogoLink>
+    <Link href="/">
+      <a className={wrapper}>Nate Stephens</a>
     </Link>
   );
 }
-
-/* =============================================
-              STYLED-COMPONENTS
-============================================= */
-const LogoLink = styled.a`
-  margin-inline-end: 32px;
-`;
-
-const LogoWrapper = styled.span`
-  font-family: var(--ff-sans-serif);
-  font-weight: var(--fw-bold);
-  font-size: 24px;
-  color: red;
-`;

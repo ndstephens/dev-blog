@@ -1,0 +1,42 @@
+.link {
+  position: relative;
+  padding: 10px;
+  color: var(--color-text-body-dimmed);
+  font-weight: var(--fw-bold);
+  font-size: 1.1rem;
+  font-family: var(--ff-sans-serif);
+
+  &::after {
+    bottom: 8px;
+    content: '';
+    display: block;
+    background-color: currentColor;
+    height: 3px;
+    left: 10px;
+    position: absolute;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease-out;
+    width: calc(100% - 20px);
+  }
+}
+
+.inactiveLink {
+  composes: link;
+
+  &:hover {
+    color: var(--color-text-body);
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+.activeLink {
+  composes: link;
+
+  color: var(--color-text-body);
+  &::after {
+    transform: scaleX(1);
+  }
+}

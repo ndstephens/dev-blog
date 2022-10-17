@@ -1,8 +1,16 @@
 import { useRouter } from 'next/router';
-import styled from 'styled-components';
 
-import { ActiveLink } from 'src/components/AppLayout/Header/NavDesktop/ActiveLink';
+import { ActiveLink } from 'src/components/AppLayout/Header/ActiveLink';
 import { capitalizeFirstLetter } from 'src/utils/helperFns';
+
+import {
+  blank,
+  container,
+  navGrid,
+  navItem,
+  navList,
+  navWrapper,
+} from './NavDesktop.module.scss';
 
 export function NavDesktop() {
   const { pathname } = useRouter();
@@ -10,37 +18,24 @@ export function NavDesktop() {
   const sections = ['blog', 'portfolio', 'about'];
 
   return (
-    <NavContainer>
-      <NavList>
-        {sections.map((section) => (
-          <NavItem key={section}>
-            <ActiveLink
-              name={capitalizeFirstLetter(section)}
-              href={`/${section}`}
-              isActive={pathname.startsWith(`/${section}`)}
-            />
-          </NavItem>
-        ))}
-      </NavList>
-    </NavContainer>
+    <div className={container}>
+      <div className={blank} style={{ gridArea: 'blank-start' }} />
+      <nav className={navGrid}>
+        <div className={navWrapper}>
+          <ul className={navList}>
+            {sections.map((section) => (
+              <li className={navItem} key={section}>
+                <ActiveLink
+                  name={capitalizeFirstLetter(section)}
+                  href={`/${section}`}
+                  isActive={pathname.startsWith(`/${section}`)}
+                />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </nav>
+      <div className={blank} style={{ gridArea: 'blank-end' }} />
+    </div>
   );
 }
-
-/* =============================================
-                STYLED-COMPONENTS
-============================================= */
-const NavContainer = styled.nav`
-  height: 100%;
-`;
-
-const NavList = styled.ul`
-  height: 100%;
-  display: flex;
-  align-items: center;
-`;
-
-const NavItem = styled.li`
-  margin-inline: 10px;
-  display: flex;
-  align-items: center;
-`;

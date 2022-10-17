@@ -27,6 +27,7 @@ export const printWebVitalMetric = ({ label, name, value }: Props) => {
   if (label === 'web-vital') {
     const metricPrintName = `${name}:`.padEnd(5, ' ');
     const colors = selectColors({ name, value });
+    // eslint-disable-next-line no-console
     console.log(
       `%cMETRIC - ${metricPrintName} ${metricPrintValue}${
         name !== 'CLS' ? 'ms' : '  '
@@ -36,6 +37,7 @@ export const printWebVitalMetric = ({ label, name, value }: Props) => {
   }
 
   if (label === 'custom') {
+    // eslint-disable-next-line no-console
     console.log(
       `%cMETRIC - ${name}: ${metricPrintValue}ms`,
       'font-weight:bold; background-color:cyan; color:black; padding-block:4px; padding-inline:12px;'
