@@ -63,8 +63,8 @@ export const getAllPostTopicsInUse = (posts: Post[]): PostTopic[] => {
 
 // SORT POSTS BY DATE - RECENT FIRST
 export const sortPostsByDate = (a: Post, b: Post) => {
-  if (a.meta.date < b.meta.date) return 1;
-  if (a.meta.date > b.meta.date) return -1;
+  if (a.meta.created < b.meta.created) return 1;
+  if (a.meta.created > b.meta.created) return -1;
   return 0;
 };
 
@@ -122,7 +122,8 @@ const getPostFromPath = async (postPath: string): Promise<Post> => {
           slug,
           title: data.title,
           description: data.description,
-          date: data.date.toISOString(),
+          created: data.created.toISOString(),
+          updated: data.updated.toISOString(),
           type: data.type,
           topics: data.topics.sort(),
         },
@@ -154,7 +155,8 @@ interface PostLike {
   data: {
     title: string;
     description: string;
-    date: Date;
+    created: Date;
+    updated: Date;
     type: PostType;
     topics: PostTopic[];
   };
@@ -185,9 +187,23 @@ const isPostLike = (post: any, slug: string): post is PostLike => {
       `${slug}: post description does not exist or is not a string`
     );
   }
-  // DATE
-  if (!('date' in post['data']) || typeof post['data']['date'] !== 'object') {
-    throw new Error(`${slug}: post date does not exist or is not a string`);
+  // DATE-CREATED
+  if (
+    !('created' in post['data']) ||
+    typeof post['data']['created'] !== 'object'
+  ) {
+    throw new Error(
+      `${slug}: post created-date does not exist or is not an object`
+    );
+  }
+  // DATE-UPDATED
+  if (
+    !('updated' in post['data']) ||
+    typeof post['data']['updated'] !== 'object'
+  ) {
+    throw new Error(
+      `${slug}: post updated-date does not exist or is not an object`
+    );
   }
   // TYPE
   if (

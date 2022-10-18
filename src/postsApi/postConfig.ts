@@ -29,7 +29,8 @@ export interface PostMeta {
   slug: string;
   title: string;
   description: string;
-  date: string;
+  created: string;
+  updated: string;
   type: PostType;
   topics: PostTopic[];
 }
