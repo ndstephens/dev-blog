@@ -24,10 +24,12 @@
 .inactiveLink {
   composes: link;
 
-  &:hover {
-    color: var(--color-text-body);
-    &::after {
-      transform: scaleX(1);
+  @media (hover: hover) {
+    &:hover {
+      color: var(--color-text-body);
+      &::after {
+        transform: scaleX(1);
+      }
     }
   }
 }
