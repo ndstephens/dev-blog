@@ -1,23 +1,26 @@
 .link {
+  --spacing: 10px;
+
   position: relative;
-  padding: 10px;
-  color: var(--color-text-body-dimmed);
-  font-weight: var(--fw-bold);
-  font-size: 1.1rem;
+  padding: var(--spacing);
+  color: var(--color-body-text);
   font-family: var(--ff-sans-serif);
+  font-weight: var(--fw-semi-bold);
+  font-size: 0.9rem;
+  text-transform: uppercase;
 
   &::after {
-    bottom: 8px;
+    bottom: 0.5em;
     content: '';
     display: block;
     background-color: currentColor;
-    height: 3px;
-    left: 10px;
+    height: 2px;
+    left: var(--spacing);
     position: absolute;
     transform: scaleX(0);
-    transform-origin: left;
+    transform-origin: right;
     transition: transform 0.25s ease-out;
-    width: calc(100% - 20px);
+    width: calc(100% - calc(2 * var(--spacing)));
   }
 }
 
@@ -26,9 +29,9 @@
 
   @media (hover: hover) {
     &:hover {
-      color: var(--color-text-body);
       &::after {
         transform: scaleX(1);
+        transform-origin: left;
       }
     }
   }
@@ -37,7 +40,6 @@
 .activeLink {
   composes: link;
 
-  color: var(--color-text-body);
   &::after {
     transform: scaleX(1);
   }

@@ -1,1 +1,2 @@
-export { default as MaxWidthWrapper } from './MaxWidthWrapper/MaxWidthWrapper';
+export { default as MaxWidthWrapper } from './MaxWidthWrapper';
+export { default as VisuallyHidden } from './VisuallyHidden';

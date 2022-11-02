@@ -8,8 +8,8 @@ interface MainProps {
 
 export function Main({ children }: MainProps) {
   return (
-    <div className={container}>
+    <main className={container}>
       <MaxWidthWrapper>{children}</MaxWidthWrapper>
-    </div>
+    </main>
   );
 }

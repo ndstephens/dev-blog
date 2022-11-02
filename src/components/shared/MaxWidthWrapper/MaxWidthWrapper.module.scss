@@ -1,7 +1,9 @@
 .container {
   width: 100%;
-  max-width: var(--content-wrapper-max-width);
-  height: 100%;
+  max-width: calc(
+    var(--content-max-width) + calc(2 * var(--content-padding-inline))
+  );
+  padding-inline: var(--content-padding-inline);
   margin-inline: auto;
-  padding-inline: var(--content-wrapper-padding-inline);
+  height: 100%;
 }
