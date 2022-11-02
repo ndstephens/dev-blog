@@ -1,5 +1,3 @@
-import { MaxWidthWrapper } from 'src/components/shared';
-
 import { container } from './Main.module.scss';
 
 interface MainProps {
@@ -7,9 +5,5 @@ interface MainProps {
 }
 
 export function Main({ children }: MainProps) {
-  return (
-    <main className={container}>
-      <MaxWidthWrapper>{children}</MaxWidthWrapper>
-    </main>
-  );
+  return <main className={container}>{children}</main>;
 }

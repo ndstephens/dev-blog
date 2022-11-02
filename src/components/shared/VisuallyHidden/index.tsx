@@ -44,9 +44,6 @@ export default function VisuallyHidden({ children, ...delegated }: Props) {
 
   const style = forceShow ? {} : hiddenStyles;
 
-  // if (forceShow) {
-  //   return children;
-  // }
   return (
     <span style={style} {...delegated}>
       {children}

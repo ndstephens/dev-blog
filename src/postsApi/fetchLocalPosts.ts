@@ -9,6 +9,7 @@ import {
   postTopics,
   PostType,
   postTypes,
+  recentPostsLength,
 } from 'src/postsApi/postConfig';
 
 // TODO: create test to verify you don't have 2 or more posts with the same filename / slug
@@ -67,6 +68,10 @@ export const sortPostsByDate = (a: Post, b: Post) => {
   if (a.meta.created > b.meta.created) return -1;
   return 0;
 };
+
+// LIMIT TO RECENT POSTS
+export const limitToRecentPosts = (posts: Post[]) =>
+  posts.slice(0, recentPostsLength);
 
 // EXTRACT POST META
 export const extractPostMeta = (post: Post) => post.meta;

@@ -1,5 +1,5 @@
 /* =============================================
-            POST TYPES AND TOPICS
+                  CONFIG
 ============================================= */
 export const postTypes: PostType[] = ['notes', 'snippets'];
 
@@ -17,8 +17,10 @@ export const postTopics: PostTopic[] = [
   'typescript',
 ];
 
+export const recentPostsLength = 10;
+
 /* =============================================
-                  TS-TYPES
+                  TYPES
 ============================================= */
 export interface Post {
   content: string;
