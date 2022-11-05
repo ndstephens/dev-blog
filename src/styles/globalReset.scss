@@ -12,7 +12,7 @@
   background-repeat: no-repeat;
   border: none;
   border-radius: 0;
-  // line-height: calc(1em + 0.725rem);
+  line-height: calc(1em + 0.725rem);
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
@@ -35,10 +35,9 @@ html {
 }
 
 body {
-  font-family: var(--ff-serif);
+  font-family: var(--ff-body);
   font-weight: var(--fw-medium);
   font-synthesis: none;
-  // line-height: calc(1em + 0.725rem);
   background-color: var(--color-body-background);
   color: var(--color-body-text);
   transition: background 300ms, color 300ms;
@@ -55,7 +54,7 @@ input,
 option,
 select,
 textarea {
-  font-family: var(--ff-sans-serif);
+  font-family: var(--ff-primary);
 }
 
 // button,
@@ -67,14 +66,13 @@ textarea {
 //   color: inherit;
 // }
 
-p,
 h1,
 h2,
 h3,
 h4,
 h5,
-h6 {
-  line-height: calc(1em + 0.725rem);
+h6,
+p {
   overflow-wrap: break-word;
   // hyphens: auto;
 }

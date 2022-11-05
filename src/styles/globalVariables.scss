@@ -6,8 +6,8 @@
   //? FONTS
 
   //* FONT FAMILY
-  --ff-serif: 'VollkornVariable', serif;
-  --ff-sans-serif: 'MontserratVariable', sans-serif;
+  --ff-primary: 'Baloo 2Variable', serif;
+  --ff-body: 'ExoVariable', sans-serif;
   --ff-mono: 'Red Hat MonoVariable', monospace;
 
   //* FONT WEIGHT
@@ -88,7 +88,7 @@
 
   //? APP-WIDE
   //* COLORS
-  --color-body-text: hsl(222deg, 22%, 5%);
+  --color-body-text: var(--color-gray-1000);
   --color-body-text-dimmed: var(--color-gray-600);
   --color-body-background: var(--color-gray-000);
   --color-body-background-dimmed: var(--color-gray-100);

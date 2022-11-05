@@ -6,11 +6,15 @@ import { AppLayout } from 'src/components/AppLayout';
 // import ErrorBoundary from 'src/components/ErrorBoundary';
 import { printWebVitalMetric } from 'src/utils/webMetrics';
 
-import '@fontsource/montserrat/variable.css';
-// // import '@fontsource/montserrat/variable-italic.css';
+// import '@fontsource/montserrat/variable.css';
+// import '@fontsource/montserrat/variable-italic.css';
+// import '@fontsource/vollkorn/variable.css';
+// import '@fontsource/vollkorn/variable-italic.css';
+import '@fontsource/baloo-2/variable.css';
+import '@fontsource/exo/variable.css';
+import '@fontsource/exo/variable-italic.css';
 import '@fontsource/red-hat-mono/variable.css';
-import '@fontsource/vollkorn/variable.css';
-import '@fontsource/vollkorn/variable-italic.css';
+//
 import 'src/styles/globalVariables.scss';
 import 'src/styles/globalReset.scss';
 
