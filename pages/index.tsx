@@ -45,7 +45,7 @@ interface StaticProps {
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   const allPosts = await getAllPosts();
   const sortedPosts = allPosts.sort(sortPostsByDate);
-  const recentPosts = limitToRecentPosts(sortedPosts);
+  const recentPosts = limitToRecentPosts(sortedPosts, 10);
   const postsMeta = recentPosts.map(extractPostMeta);
 
   if (!allPosts) {

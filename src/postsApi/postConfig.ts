@@ -17,8 +17,6 @@ export const postTopics: PostTopic[] = [
   'typescript',
 ];
 
-export const recentPostsLength = 10;
-
 /* =============================================
                   TYPES
 ============================================= */
