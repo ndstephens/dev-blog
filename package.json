@@ -22,30 +22,30 @@
   "dependencies": {
     "@fontsource/baloo-2": "^4.5.10",
     "@fontsource/exo": "^4.5.10",
-    "@fontsource/montserrat": "^4.5.13",
     "@fontsource/red-hat-mono": "^4.5.11",
-    "@fontsource/vollkorn": "^4.5.12",
     "fast-glob": "^3.2.12",
     "gray-matter": "^4.0.3",
-    "next": "12.3.1",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "next": "^12.3.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@svgr/webpack": "^6.4.0",
-    "@types/node": "18.8.0",
-    "@types/react": "18.0.21",
-    "@types/react-dom": "18.0.6",
-    "eslint": "8.24.0",
-    "eslint-config-next": "12.3.1",
+    "@types/node": "^18.8.0",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
+    "autoprefixer": "^10.4.13",
+    "eslint": "^8.24.0",
+    "eslint-config-next": "^12.3.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-mdx": "^2.0.5",
     "eslint-plugin-simple-import-sort": "^8.0.0",
-    "husky": "^7.0.0",
+    "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
+    "postcss": "^8.4.18",
     "prettier": "^2.7.1",
-    "sass": "^1.55.0",
-    "typescript": "4.8.4",
-    "typescript-plugin-css-modules": "^3.4.0"
+    "prettier-plugin-tailwindcss": "^0.1.13",
+    "tailwindcss": "^3.2.2",
+    "typescript": "^4.8.4"
   }
 }

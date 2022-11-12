@@ -27,7 +27,7 @@ body,
 
 html {
   scroll-behavior: smooth;
-  // font-size: 62.5%;
+  /* font-size: 62.5%; */
 }
 
 #__next {
@@ -57,14 +57,14 @@ textarea {
   font-family: var(--ff-primary);
 }
 
-// button,
-// input,
-// option,
-// select,
-// textarea {
-//   font: inherit;
-//   color: inherit;
-// }
+/* button,
+input,
+option,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+} */
 
 h1,
 h2,
@@ -74,7 +74,7 @@ h5,
 h6,
 p {
   overflow-wrap: break-word;
-  // hyphens: auto;
+  /* hyphens: auto; */
 }
 
 h1,
@@ -124,7 +124,7 @@ pre,
 samp {
   font-family: var(--ff-mono);
   font-weight: var(--fw-medium);
-  // font-size: 0.9rem;
+  /* font-size: 0.9rem; */
 }
 
 small {

@@ -1,0 +1,87 @@
+/**================================================
+/**                    BASE                       =
+/**==============================================*/
+@tailwind base;
+@layer base {
+  /* TODO: universally remove all outlines on focus ?? */
+  * {
+    @apply antialiased;
+  }
+  /* :where(*) {
+    @apply motion-safe:transition-colors;
+    @apply motion-safe:duration-300;
+  } */
+
+  html,
+  body,
+  #__next {
+    @apply h-full;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply font-sans;
+    @apply font-normal;
+    @apply bg-ctx-bgColor-body;
+    @apply text-ctx-textColor-body;
+    /* @apply motion-safe:transition-colors;
+    @apply motion-safe:duration-300; */
+  }
+
+  #__next {
+    @apply isolate;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display;
+  }
+
+  button,
+  nav * {
+    @apply select-none;
+  }
+}
+
+/**================================================
+/**                 COMPONENTS                    =
+/**==============================================*/
+@tailwind components;
+
+/**================================================
+/**                 UTILITIES                     =
+/**==============================================*/
+@tailwind utilities;
+
+/**================================================
+/**               GLOBAL VARIABLES                =
+/**==============================================*/
+:root {
+  /* LAYOUT */
+  /* TODO: these should maybe just exist in the MaxWidth component */
+  --content-max-width: 64rem;
+  --content-padding-inline: theme(spacing.8);
+  /* HEADER */
+  --header-height: theme(spacing.12);
+}
+
+/*? LIGHT MODE COLORS */
+html {
+  --color-text-body: theme(colors.slate.900);
+  --color-bg-body: theme(colors.slate.100);
+  --color-primary: theme(colors.red.600);
+}
+
+/*? DARK MODE COLORS */
+html.dark {
+  --color-text-body: theme(colors.slate.100);
+  --color-bg-body: theme(colors.slate.900);
+  --color-primary: theme(colors.red.500);
+}
