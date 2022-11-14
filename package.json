@@ -23,6 +23,7 @@
     "@fontsource/baloo-2": "^4.5.10",
     "@fontsource/exo": "^4.5.10",
     "@fontsource/red-hat-mono": "^4.5.11",
+    "color": "^4.2.3",
     "fast-glob": "^3.2.12",
     "gray-matter": "^4.0.3",
     "next": "^12.3.1",
@@ -31,6 +32,7 @@
   },
   "devDependencies": {
     "@svgr/webpack": "^6.4.0",
+    "@types/color": "^3.0.3",
     "@types/node": "^18.8.0",
     "@types/react": "^18.0.21",
     "@types/react-dom": "^18.0.6",

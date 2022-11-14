@@ -1,5 +1,26 @@
 const plugin = require('tailwindcss/plugin');
 const defaultTheme = require('tailwindcss/defaultTheme');
+const Color = require('color');
+
+//* USE CSS-VAR COLORS WITH OPACITY
+const CS = 'rgb';
+const withOpacity = (variableName, colorSpace) =>
+  colorSpace === 'rgb'
+    ? `rgb(var(${variableName}) / <alpha-value>)`
+    : `hsl(var(${variableName}) / <alpha-value>)`;
+const asChannels = (hexValue, colorSpace) =>
+  colorSpace === 'rgb' ? hexToRGB(hexValue) : hexToHSL(hexValue);
+const hexToRGB = (hexValue) => {
+  return Color(hexValue).rgb().array().join(' ');
+};
+const hexToHSL = (hexValue) => {
+  return Color(hexValue)
+    .hsl()
+    .array()
+    .map((val, i) => `${Math.round(val)}${i === 0 ? 'deg' : '%'}`)
+    .join(' ');
+};
+//* USE CSS-VAR COLORS WITH OPACITY
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -21,20 +42,20 @@ module.exports = {
         mono: ['"Red Hat MonoVariable"', ...defaultTheme.fontFamily.mono],
       },
       colors: {
-        ctx: {
-          textColor: {
-            body: 'var(--color-text-body)',
+        clr: {
+          text: {
+            base: withOpacity('--color-text-base', CS),
           },
-          bgColor: {
-            body: 'var(--color-bg-body)',
+          bg: {
+            base: withOpacity('--color-bg-base', CS),
           },
-          primaryColor: {
-            DEFAULT: 'var(--color-primary)',
+          primary: {
+            base: withOpacity('--color-primary-base', CS),
           },
         },
       },
       spacing: {
-        ctx: {
+        sp: {
           headerHeight: '--var(--header-height)',
         },
       },
@@ -45,13 +66,28 @@ module.exports = {
     // require('@tailwindcss/forms'),
     // require('@tailwindcss/line-clamp'),
     // require('@tailwindcss/aspect-ratio'),
-    plugin(function ({ addUtilities, addVariant }) {
+    plugin(function ({ addBase, addUtilities, addVariant, theme }) {
       addUtilities({
         '.content-auto': {
           'content-visibility': 'auto',
         },
       });
       addVariant('hocus', ['&:hover', '&:focus ']);
+      addBase({
+        html: {
+          // -inverted, -muted, -accent, -accent-hover
+          //? LIGHT-MODE COLORS
+          '--color-text-base': asChannels(theme('colors.slate.900'), CS),
+          '--color-bg-base': asChannels(theme('colors.slate.100'), CS),
+          '--color-primary-base': asChannels(theme('colors.red.600'), CS),
+        },
+        'html.dark': {
+          //? DARK-MODE COLORS
+          '--color-text-base': asChannels(theme('colors.slate.100'), CS),
+          '--color-bg-base': asChannels(theme('colors.slate.900'), CS),
+          '--color-primary-base': asChannels(theme('colors.red.400'), CS),
+        },
+      });
     }),
   ],
 };

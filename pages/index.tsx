@@ -16,21 +16,23 @@ export default function HomePage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      <PageHeader>
+      {/* <PageHeader>
         <VisuallyHidden>
           <h1>Nate Stephens homepage</h1>
         </VisuallyHidden>
         <h2>Recent Posts...</h2>
       </PageHeader>
-      <PageBody>
-        <ul>
-          {postsMeta.map((postMeta) => (
-            <li key={postMeta.title}>
-              <PostPreview postMeta={postMeta} />
-            </li>
-          ))}
-        </ul>
-      </PageBody>
+      <PageBody> */}
+      <h1 className="text-6xl font-bold text-clr-text-base/50">Hello</h1>
+      <ul>
+        {postsMeta.map((postMeta) => (
+          <li key={postMeta.title}>
+            {/* <PostPreview postMeta={postMeta} /> */}
+            <pre>{JSON.stringify(postMeta, null, 2)}</pre>
+          </li>
+        ))}
+      </ul>
+      {/* </PageBody> */}
     </>
   );
 }

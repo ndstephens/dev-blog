@@ -23,10 +23,8 @@
   }
 
   body {
-    @apply font-sans;
-    @apply font-normal;
-    @apply bg-ctx-bgColor-body;
-    @apply text-ctx-textColor-body;
+    @apply bg-clr-bg-base;
+    @apply text-clr-text-base;
     /* @apply motion-safe:transition-colors;
     @apply motion-safe:duration-300; */
   }
@@ -63,25 +61,13 @@
 /**================================================
 /**               GLOBAL VARIABLES                =
 /**==============================================*/
-:root {
-  /* LAYOUT */
-  /* TODO: these should maybe just exist in the MaxWidth component */
-  --content-max-width: 64rem;
-  --content-padding-inline: theme(spacing.8);
-  /* HEADER */
-  --header-height: theme(spacing.12);
-}
-
-/*? LIGHT MODE COLORS */
-html {
-  --color-text-body: theme(colors.slate.900);
-  --color-bg-body: theme(colors.slate.100);
-  --color-primary: theme(colors.red.600);
-}
-
-/*? DARK MODE COLORS */
-html.dark {
-  --color-text-body: theme(colors.slate.100);
-  --color-bg-body: theme(colors.slate.900);
-  --color-primary: theme(colors.red.500);
+@layer base {
+  :root {
+    /* LAYOUT */
+    /* TODO: these should maybe just exist in the MaxWidth component */
+    --content-max-width: 64rem;
+    --content-padding-inline: theme(spacing.8);
+    /* HEADER */
+    --header-height: theme(spacing.12);
+  }
 }
