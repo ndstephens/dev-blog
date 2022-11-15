@@ -2,28 +2,39 @@ const plugin = require('tailwindcss/plugin');
 const defaultTheme = require('tailwindcss/defaultTheme');
 const Color = require('color');
 
-//* USE CSS-VAR COLORS WITH OPACITY
-const CS = 'rgb';
-const withOpacity = (variableName, colorSpace) =>
+/* =============================================
+*      USE CSS-VAR HEX COLORS WITH OPACITY     =
+============================================= */
+const colorSpace = 'rgb'; // 'rgb' or 'hsl'
+
+const withOpacity = (cssVariable) =>
   colorSpace === 'rgb'
-    ? `rgb(var(${variableName}) / <alpha-value>)`
-    : `hsl(var(${variableName}) / <alpha-value>)`;
-const asChannels = (hexValue, colorSpace) =>
-  colorSpace === 'rgb' ? hexToRGB(hexValue) : hexToHSL(hexValue);
-const hexToRGB = (hexValue) => {
-  return Color(hexValue).rgb().array().join(' ');
+    ? `rgb(${cssVariable} / <alpha-value>)`
+    : `hsl(${cssVariable} / <alpha-value>)`;
+
+const asChannels = (hexColor) =>
+  colorSpace === 'rgb' ? hexToRGB(hexColor) : hexToHSL(hexColor);
+
+const hexToRGB = (hexColor) => {
+  return Color(hexColor).rgb().array().join(' ');
 };
-const hexToHSL = (hexValue) => {
-  return Color(hexValue)
+
+const hexToHSL = (hexColor) => {
+  return Color(hexColor)
     .hsl()
     .array()
     .map((val, i) => `${Math.round(val)}${i === 0 ? 'deg' : '%'}`)
     .join(' ');
 };
-//* USE CSS-VAR COLORS WITH OPACITY
 
+/* =============================================
+*               TAILWIND CONFIG                =
+============================================= */
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  future: {
+    hoverOnlyWhenSupported: true,
+  },
   // prefix: 'tw-',
   darkMode: 'class',
   // ! If you have any JavaScript files that manipulate your HTML to add classes, make sure you include those as well.
@@ -35,6 +46,10 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
+    screens: {
+      xs: '480px',
+      ...defaultTheme.screens,
+    },
     extend: {
       fontFamily: {
         display: ['"Baloo 2Variable"', ...defaultTheme.fontFamily.serif],
@@ -42,50 +57,61 @@ module.exports = {
         mono: ['"Red Hat MonoVariable"', ...defaultTheme.fontFamily.mono],
       },
       colors: {
-        clr: {
-          text: {
-            base: withOpacity('--color-text-base', CS),
-          },
-          bg: {
-            base: withOpacity('--color-bg-base', CS),
-          },
-          primary: {
-            base: withOpacity('--color-primary-base', CS),
-          },
+        text: {
+          base: withOpacity('var(--color-text-base)'),
+          dim: withOpacity('var(--color-text-dim)'),
+        },
+        surface: {
+          1: withOpacity('var(--color-surface-1)'),
+          2: withOpacity('var(--color-surface-2)'),
+          3: withOpacity('var(--color-surface-3)'),
+          4: withOpacity('var(--color-surface-4)'),
+        },
+        primary: {
+          1: withOpacity('var(--color-primary-1)'),
         },
       },
-      spacing: {
-        sp: {
-          headerHeight: '--var(--header-height)',
-        },
-      },
+      spacing: {},
     },
   },
   plugins: [
     // require('@tailwindcss/typography'),
     // require('@tailwindcss/forms'),
     // require('@tailwindcss/line-clamp'),
-    // require('@tailwindcss/aspect-ratio'),
     plugin(function ({ addBase, addUtilities, addVariant, theme }) {
       addUtilities({
         '.content-auto': {
           'content-visibility': 'auto',
         },
       });
-      addVariant('hocus', ['&:hover', '&:focus ']);
+      addVariant('hocus', ['&:hover', '&:focus']);
       addBase({
+        // -inverted, -muted, -accent, -accent-hover
+        //? LIGHT-MODE COLORS
         html: {
-          // -inverted, -muted, -accent, -accent-hover
-          //? LIGHT-MODE COLORS
-          '--color-text-base': asChannels(theme('colors.slate.900'), CS),
-          '--color-bg-base': asChannels(theme('colors.slate.100'), CS),
-          '--color-primary-base': asChannels(theme('colors.red.600'), CS),
+          // TEXT
+          '--color-text-base': asChannels(theme('colors.slate.900')),
+          '--color-text-dim': asChannels(theme('colors.slate.800')),
+          // SURFACE
+          '--color-surface-1': asChannels(theme('colors.slate.50')),
+          '--color-surface-2': asChannels(theme('colors.slate.200')),
+          '--color-surface-3': asChannels(theme('colors.slate.300')),
+          '--color-surface-4': asChannels(theme('colors.slate.400')),
+          // OTHER
+          '--color-primary-1': asChannels(theme('colors.red.600')),
         },
+        //? DARK-MODE COLORS
         'html.dark': {
-          //? DARK-MODE COLORS
-          '--color-text-base': asChannels(theme('colors.slate.100'), CS),
-          '--color-bg-base': asChannels(theme('colors.slate.900'), CS),
-          '--color-primary-base': asChannels(theme('colors.red.400'), CS),
+          // TEXT
+          '--color-text-base': asChannels(theme('colors.slate.50')),
+          '--color-text-dim': asChannels(theme('colors.slate.200')),
+          // SURFACE
+          '--color-surface-1': asChannels(theme('colors.slate.900')),
+          '--color-surface-2': asChannels(theme('colors.slate.800')),
+          '--color-surface-3': asChannels(theme('colors.slate.700')),
+          '--color-surface-4': asChannels(theme('colors.slate.600')),
+          // OTHER
+          '--color-primary-1': asChannels(theme('colors.sky.500')),
         },
       });
     }),

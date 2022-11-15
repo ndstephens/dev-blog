@@ -4,46 +4,41 @@
 @tailwind base;
 @layer base {
   /* TODO: universally remove all outlines on focus ?? */
-  * {
+  :where(*) {
     @apply antialiased;
-  }
-  /* :where(*) {
+
     @apply motion-safe:transition-colors;
     @apply motion-safe:duration-300;
-  } */
 
-  html,
-  body,
-  #__next {
+    @apply motion-reduce:!animate-none;
+    @apply motion-reduce:!transform-none;
+    @apply motion-reduce:!transition-none;
+  }
+
+  :where(html, body, #__next) {
     @apply h-full;
   }
 
-  html {
+  :where(html) {
     @apply scroll-smooth;
   }
 
-  body {
-    @apply bg-clr-bg-base;
-    @apply text-clr-text-base;
+  :where(body) {
+    @apply bg-surface-1;
+    @apply text-text-base;
     /* @apply motion-safe:transition-colors;
     @apply motion-safe:duration-300; */
   }
 
-  #__next {
+  :where(#__next) {
     @apply isolate;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
+  :where(h1, h2, h3, h4, h5, h6) {
     @apply font-display;
   }
 
-  button,
-  nav * {
+  :where(button, nav *) {
     @apply select-none;
   }
 }
@@ -62,12 +57,9 @@
 /**               GLOBAL VARIABLES                =
 /**==============================================*/
 @layer base {
-  :root {
+  :where(html) {
     /* LAYOUT */
-    /* TODO: these should maybe just exist in the MaxWidth component */
-    --content-max-width: 64rem;
-    --content-padding-inline: theme(spacing.8);
     /* HEADER */
-    --header-height: theme(spacing.12);
+    /* --header-height: theme(spacing.12); */
   }
 }

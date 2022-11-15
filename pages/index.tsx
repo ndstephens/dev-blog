@@ -1,9 +1,9 @@
 import type { GetStaticProps, InferGetStaticPropsType } from 'next';
 import type { PostMeta } from 'src/postsApi/postConfig';
 
-import { PageBody, PageHeader } from 'src/components/Page';
+import PageContentWrapper from 'src/components/PageLayout/PageContentWrapper';
+import PageHeader from 'src/components/PageLayout/PageHeader';
 import PostPreview from 'src/components/PostPreview';
-import { VisuallyHidden } from 'src/components/shared';
 import {
   extractPostMeta,
   getAllPosts,
@@ -16,23 +16,23 @@ export default function HomePage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      {/* <PageHeader>
-        <VisuallyHidden>
-          <h1>Nate Stephens homepage</h1>
-        </VisuallyHidden>
-        <h2>Recent Posts...</h2>
-      </PageHeader>
-      <PageBody> */}
-      <h1 className="text-6xl font-bold text-clr-text-base/50">Hello</h1>
-      <ul>
-        {postsMeta.map((postMeta) => (
-          <li key={postMeta.title}>
-            {/* <PostPreview postMeta={postMeta} /> */}
-            <pre>{JSON.stringify(postMeta, null, 2)}</pre>
-          </li>
-        ))}
-      </ul>
-      {/* </PageBody> */}
+      <PageContentWrapper bgColor="bg-surface-2">
+        <PageHeader>
+          <h1 className="text-7xl font-bold text-text-base">Hello</h1>
+        </PageHeader>
+      </PageContentWrapper>
+      <PageContentWrapper>
+        <section className="pt-8 pb-8">
+          <ul>
+            {postsMeta.map((postMeta) => (
+              <li key={postMeta.title}>
+                {/* <PostPreview postMeta={postMeta} /> */}
+                <pre>{JSON.stringify(postMeta, null, 2)}</pre>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </PageContentWrapper>
     </>
   );
 }

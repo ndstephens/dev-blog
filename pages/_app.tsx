@@ -2,7 +2,7 @@ import type { AppProps, NextWebVitalsMetric } from 'next/app';
 
 import Head from 'next/head';
 
-// import { AppLayout } from 'src/components/AppLayout';
+import { AppLayout } from 'src/components/AppLayout';
 // import ErrorBoundary from 'src/components/ErrorBoundary';
 import { printWebVitalMetric } from 'src/utils/webMetrics';
 
@@ -24,9 +24,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         />
       </Head>
       {/* <ErrorBoundary> */}
-      {/* <AppLayout> */}
-      <Component {...pageProps} />
-      {/* </AppLayout> */}
+      <AppLayout>
+        <Component {...pageProps} />
+      </AppLayout>
       {/* </ErrorBoundary> */}
     </>
   );
