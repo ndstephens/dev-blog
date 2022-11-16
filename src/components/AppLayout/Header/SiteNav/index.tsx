@@ -1,46 +1,89 @@
+import { useRef } from 'react';
 import Link from 'next/link';
 
-import { Logo } from 'src/components/AppLayout/Header/SiteNav/Logo';
+import Logo from 'src/components/AppLayout/Header/Logo';
 import { SocialIcons } from 'src/components/AppLayout/Header/SiteNav/SocialIcons';
-import { capitalizeFirstLetter } from 'src/utils/helperFns';
+import { useNavHoverAndClick } from 'src/utils/hooks/useNavHoverAndClick';
 
 export default function SiteNav() {
-  const sections = ['notes', 'snippets', 'topics'];
+  const blogMenuRef = useRef<HTMLLIElement>(null);
+  const [isBlogNavOpen, toggleBlogNav, closeBlogNav] =
+    useNavHoverAndClick(blogMenuRef);
 
   return (
     <div className="flex h-full">
-      <nav className="flex h-full items-baseline">
-        <Logo />
-        <ul className="flex h-full items-center">
-          {sections.map((section) => (
-            <li key={section}>
-              <NavLink
-                name={capitalizeFirstLetter(section)}
-                href={`/blog/${section}`}
-              />
-            </li>
-          ))}
-        </ul>
+      <Logo />
+      <nav className="ml-auto flex h-full">
+        <PrimaryMenu>
+          <li ref={blogMenuRef} className="relative">
+            <span
+              onClick={toggleBlogNav}
+              className="hover flex h-full place-items-center px-3"
+            >
+              Blog
+            </span>
+            <ul
+              onClick={closeBlogNav}
+              className={`absolute top-full min-w-full backdrop-blur ${
+                isBlogNavOpen ? 'block' : 'hidden'
+              }`}
+            >
+              <li className="h-headerHeight">
+                <Link href="/">
+                  <a className="flex h-full place-items-center px-3">Latest</a>
+                </Link>
+              </li>
+              <li>Notes</li>
+              <li>Snippets</li>
+            </ul>
+          </li>
+          <PrimaryItem>
+            <NavItem name="Projects" />
+          </PrimaryItem>
+          <PrimaryItem>
+            <NavLink name="About" href="/about" />
+          </PrimaryItem>
+          <SocialIcons />
+        </PrimaryMenu>
       </nav>
-      <SocialIcons />
     </div>
   );
 }
 
 /* =============================================
-              NAV LINK
+                  NAV MENUS
+============================================= */
+const PrimaryMenu = ({ children }: { children: React.ReactNode }) => (
+  <ul className="flex h-full space-x-2 font-sans text-base font-medium uppercase text-textClr-base">
+    {children}
+  </ul>
+);
+
+/* =============================================
+                NAV MENU ITEMS
+============================================= */
+const PrimaryItem = ({ children }: { children: React.ReactNode }) => (
+  <li className="flex h-full place-items-center">{children}</li>
+);
+
+/* =============================================
+                  NAV ITEM
+============================================= */
+const NavItem = ({ name }: { name: string }) => (
+  <span className="p-2">{name}</span>
+);
+
+/* =============================================
+                  NAV LINK
 ============================================= */
 interface NavLinkProps {
   name: string;
   href: string;
 }
-
-function NavLink({ name, href }: NavLinkProps) {
-  return (
-    <Link href={href}>
-      <a className="p-2 font-sans text-base font-medium uppercase text-text-base">
-        {name}
-      </a>
-    </Link>
-  );
-}
+const NavLink = ({ name, href }: NavLinkProps) => (
+  <Link href={href}>
+    <a>
+      <NavItem name={name} />
+    </a>
+  </Link>
+);
