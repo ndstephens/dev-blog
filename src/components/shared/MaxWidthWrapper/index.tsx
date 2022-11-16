@@ -1,6 +1,6 @@
 const styles = {
-  header: 'px-8',
-  page: 'border-x-[16px] border-surface-4 px-4',
+  header: 'px-[32px]',
+  page: 'border-x-[8px] border-surfaceClr-4 px-[24px]',
 };
 
 interface MaxWidthWrapperProps {

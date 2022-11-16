@@ -1,3 +1,2 @@
-export function capitalizeFirstLetter(str: string): string {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
+export const capitalizeFirstLetter = ([firstLetter, ...restOfWord]: string) =>
+  firstLetter.toUpperCase() + restOfWord.join('');

@@ -6,11 +6,12 @@ import { AppLayout } from 'src/components/AppLayout';
 // import ErrorBoundary from 'src/components/ErrorBoundary';
 import { printWebVitalMetric } from 'src/utils/webMetrics';
 
+// Font imports
 import '@fontsource/baloo-2/variable.css';
 import '@fontsource/exo/variable.css';
 import '@fontsource/exo/variable-italic.css';
 import '@fontsource/red-hat-mono/variable.css';
-//
+// Tailwind CSS import
 import 'src/styles/global.css';
 
 export default function MyApp({ Component, pageProps }: AppProps) {

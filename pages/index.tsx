@@ -3,7 +3,7 @@ import type { PostMeta } from 'src/postsApi/postConfig';
 
 import PageContentWrapper from 'src/components/PageLayout/PageContentWrapper';
 import PageHeader from 'src/components/PageLayout/PageHeader';
-import PostPreview from 'src/components/PostPreview';
+// import PostPreview from 'src/components/PostPreview';
 import {
   extractPostMeta,
   getAllPosts,
@@ -16,9 +16,9 @@ export default function HomePage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      <PageContentWrapper bgColor="bg-surface-2">
+      <PageContentWrapper bgColor="bg-surfaceClr-2">
         <PageHeader>
-          <h1 className="text-7xl font-bold text-text-base">Hello</h1>
+          <h1 className="text-7xl font-bold text-textClr-base">Hello</h1>
         </PageHeader>
       </PageContentWrapper>
       <PageContentWrapper>

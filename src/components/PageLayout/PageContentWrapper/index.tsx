@@ -7,7 +7,7 @@ interface Props {
 
 export default function PageContentWrapper({
   children,
-  bgColor = 'bg-surface-1',
+  bgColor = 'bg-surfaceClr-1',
 }: Props) {
   return (
     <div className={bgColor}>

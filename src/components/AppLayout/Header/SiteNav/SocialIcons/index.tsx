@@ -3,11 +3,13 @@ import LinkedInIcon from 'src/assets/icons/linkedin.svg';
 
 export function SocialIcons() {
   return (
-    <div className="ml-auto flex h-full items-center">
+    <div className="ml-4 flex h-full items-center">
       <SocialLink href="https://github.com/ndstephens">
+        <span className="sr-only">Nate Stephens on Github</span>
         <GithubIcon />
       </SocialLink>
       <SocialLink href="https://www.linkedin.com/in/ndstephens/">
+        <span className="sr-only">Nate Stephens on LinkedIn</span>
         <LinkedInIcon />
       </SocialLink>
     </div>
@@ -27,7 +29,7 @@ function SocialLink({ children, href }: SocialLinkProps) {
       href={href}
       target="_blank"
       rel="noreferrer"
-      className="[&_svg]:max-w-6 p-2 text-text-base [&_svg]:w-6"
+      className="[&_svg]:max-w-6 p-2 text-textClr-base [&_svg]:w-6"
     >
       {children}
     </a>

@@ -24,8 +24,8 @@
   }
 
   :where(body) {
-    @apply bg-surface-1;
-    @apply text-text-base;
+    @apply bg-surfaceClr-1;
+    @apply text-textClr-base;
     /* @apply motion-safe:transition-colors;
     @apply motion-safe:duration-300; */
   }

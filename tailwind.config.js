@@ -57,21 +57,23 @@ module.exports = {
         mono: ['"Red Hat MonoVariable"', ...defaultTheme.fontFamily.mono],
       },
       colors: {
-        text: {
+        textClr: {
           base: withOpacity('var(--color-text-base)'),
           dim: withOpacity('var(--color-text-dim)'),
         },
-        surface: {
+        surfaceClr: {
           1: withOpacity('var(--color-surface-1)'),
           2: withOpacity('var(--color-surface-2)'),
           3: withOpacity('var(--color-surface-3)'),
           4: withOpacity('var(--color-surface-4)'),
         },
-        primary: {
+        primaryClr: {
           1: withOpacity('var(--color-primary-1)'),
         },
       },
-      spacing: {},
+      spacing: {
+        headerHeight: '48px',
+      },
     },
   },
   plugins: [
