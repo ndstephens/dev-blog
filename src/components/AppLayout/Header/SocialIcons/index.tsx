@@ -6,11 +6,11 @@ export function SocialIcons() {
     <div className="ml-4 flex h-full items-center">
       <SocialLink href="https://github.com/ndstephens">
         <span className="sr-only">Nate Stephens on Github</span>
-        <GithubIcon />
+        <GithubIcon aria-hidden />
       </SocialLink>
       <SocialLink href="https://www.linkedin.com/in/ndstephens/">
         <span className="sr-only">Nate Stephens on LinkedIn</span>
-        <LinkedInIcon />
+        <LinkedInIcon aria-hidden />
       </SocialLink>
     </div>
   );

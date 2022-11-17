@@ -22,7 +22,7 @@ export default function SiteNav() {
           <ul
             onClick={closeBlogNav}
             className={`absolute top-full min-w-full backdrop-blur ${
-              isBlogNavOpen ? 'block' : 'hidden'
+              isBlogNavOpen ? 'not-sr-only' : 'sr-only'
             }`}
           >
             <li className="h-headerHeight">
@@ -50,7 +50,7 @@ export default function SiteNav() {
                   NAV MENUS
 ============================================= */
 const PrimaryMenu = ({ children }: { children: React.ReactNode }) => (
-  <ul className="flex h-full space-x-2 font-sans text-base font-medium uppercase text-textClr-base">
+  <ul className="flex h-full font-sans text-base font-medium uppercase text-textClr-base">
     {children}
   </ul>
 );
