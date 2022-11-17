@@ -14,16 +14,6 @@ export function useNavHoverAndClick<T extends HTMLElement = HTMLElement>(
 
   // MENU DISPLAY STATE AND EVENT HANDLERS
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const handleToggleMenu = () => {
-    if (isLargeScreen && !isMouseDevice) {
-      setIsOpen((ps) => !ps);
-    }
-  };
-  const handleCloseMenu = () => {
-    if (isLargeScreen) {
-      setIsOpen(false);
-    }
-  };
 
   //* HANDLE SCREEN SIZE EVENTS
   useEffect(() => {
@@ -48,7 +38,19 @@ export function useNavHoverAndClick<T extends HTMLElement = HTMLElement>(
   useEventListener('mouseenter', handleMouseEnter, elementRef);
   useEventListener('mouseleave', handleMouseLeave, elementRef);
 
-  //* HANDLE CLICK OUTSIDE EVENTS
+  //* HANDLE NAV/MENU CLICK EVENTS
+  const handleToggleMenu = () => {
+    if (isLargeScreen && !isMouseDevice) {
+      setIsOpen((ps) => !ps);
+    }
+  };
+  const handleCloseMenu = () => {
+    if (isLargeScreen) {
+      setIsOpen(false);
+    }
+  };
+
+  //* HANDLE CLICK-OUTSIDE EVENTS
   const handleClickOutside = () => {
     if (isLargeScreen && !isMouseDevice) {
       setIsOpen(false);

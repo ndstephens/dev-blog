@@ -1,8 +1,7 @@
 import { useRef } from 'react';
 import Link from 'next/link';
 
-import Logo from 'src/components/AppLayout/Header/Logo';
-import { SocialIcons } from 'src/components/AppLayout/Header/SiteNav/SocialIcons';
+import { SocialIcons } from 'src/components/AppLayout/Header/SocialIcons';
 import { useNavHoverAndClick } from 'src/utils/hooks/useNavHoverAndClick';
 
 export default function SiteNav() {
@@ -11,42 +10,39 @@ export default function SiteNav() {
     useNavHoverAndClick(blogMenuRef);
 
   return (
-    <div className="flex h-full">
-      <Logo />
-      <nav className="ml-auto flex h-full">
-        <PrimaryMenu>
-          <li ref={blogMenuRef} className="relative">
-            <span
-              onClick={toggleBlogNav}
-              className="hover flex h-full place-items-center px-3"
-            >
-              Blog
-            </span>
-            <ul
-              onClick={closeBlogNav}
-              className={`absolute top-full min-w-full backdrop-blur ${
-                isBlogNavOpen ? 'block' : 'hidden'
-              }`}
-            >
-              <li className="h-headerHeight">
-                <Link href="/">
-                  <a className="flex h-full place-items-center px-3">Latest</a>
-                </Link>
-              </li>
-              <li>Notes</li>
-              <li>Snippets</li>
-            </ul>
-          </li>
-          <PrimaryItem>
-            <NavItem name="Projects" />
-          </PrimaryItem>
-          <PrimaryItem>
-            <NavLink name="About" href="/about" />
-          </PrimaryItem>
-          <SocialIcons />
-        </PrimaryMenu>
-      </nav>
-    </div>
+    <nav className="ml-auto flex h-full">
+      <PrimaryMenu>
+        <li ref={blogMenuRef} className="relative">
+          <span
+            onClick={toggleBlogNav}
+            className="hover flex h-full place-items-center px-3"
+          >
+            Blog
+          </span>
+          <ul
+            onClick={closeBlogNav}
+            className={`absolute top-full min-w-full backdrop-blur ${
+              isBlogNavOpen ? 'block' : 'hidden'
+            }`}
+          >
+            <li className="h-headerHeight">
+              <Link href="/">
+                <a className="flex h-full place-items-center px-3">Latest</a>
+              </Link>
+            </li>
+            <li>Notes</li>
+            <li>Snippets</li>
+          </ul>
+        </li>
+        <PrimaryItem>
+          <NavItem name="Projects" />
+        </PrimaryItem>
+        <PrimaryItem>
+          <NavLink name="About" href="/about" />
+        </PrimaryItem>
+        <SocialIcons />
+      </PrimaryMenu>
+    </nav>
   );
 }
 
