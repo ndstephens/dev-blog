@@ -7,7 +7,7 @@ import {
   sortPostsByDate,
 } from 'src/postsApi/fetchLocalPosts';
 
-export default function AllSnippetsPage({
+export default function BlogSnippetsPage({
   posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (

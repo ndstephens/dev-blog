@@ -7,7 +7,7 @@ import {
   sortPostsByDate,
 } from 'src/postsApi/fetchLocalPosts';
 
-export default function AllNotesPage({
+export default function BlogNotesPage({
   posts,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (

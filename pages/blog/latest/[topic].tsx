@@ -13,7 +13,7 @@ import {
   sortPostsByDate,
 } from 'src/postsApi/fetchLocalPosts';
 
-export default function PostsByTopicPage({
+export default function LatestByTopicPage({
   posts,
   topic,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
