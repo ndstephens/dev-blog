@@ -1,5 +1,5 @@
-import GithubIcon from 'src/assets/icons/github.svg';
-import LinkedInIcon from 'src/assets/icons/linkedin.svg';
+import GithubIcon from 'src/assets/icons/social/github.svg';
+import LinkedInIcon from 'src/assets/icons/social/linkedin.svg';
 
 export function SocialIcons() {
   return (
