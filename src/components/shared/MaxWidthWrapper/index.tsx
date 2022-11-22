@@ -1,7 +1,4 @@
-const styles = {
-  header: 'px-[32px]',
-  page: 'border-x-[8px] border-surfaceClr-4 px-[24px]',
-};
+import clsx from 'clsx';
 
 interface MaxWidthWrapperProps {
   children: React.ReactNode;
@@ -13,7 +10,12 @@ export default function MaxWidthWrapper({
   type,
 }: MaxWidthWrapperProps) {
   return (
-    <div className={`mx-auto h-full max-w-[calc(1024px+64px)] ${styles[type]}`}>
+    <div
+      className={clsx('mx-auto h-full max-w-[calc(1024px+64px)]', {
+        'px-[32px]': type === 'header',
+        'border-x-[8px] border-surfaceClr-4 px-[24px]': type === 'page',
+      })}
+    >
       {children}
     </div>
   );

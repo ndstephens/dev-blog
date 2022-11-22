@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import clsx from 'clsx';
 import Link from 'next/link';
 
 import { useNavHoverAndClick } from 'src/utils/hooks/useNavHoverAndClick';
@@ -23,9 +24,10 @@ export function NavItemWithSubMenu({ label, menuItems }: Props) {
       <Label onClick={toggleSubMenu}>{label}</Label>
       <ul
         onClick={closeSubMenu}
-        className={`backdrop-blur-lg md:absolute md:top-full md:min-w-full md:divide-y-2 md:divide-surfaceClr-2 ${
+        className={clsx(
+          'backdrop-blur-lg md:absolute md:top-full md:min-w-full md:divide-y-2 md:divide-surfaceClr-2',
           isSubMenuOpen ? 'not-sr-only' : 'sr-only'
-        }`}
+        )}
       >
         {menuItems.map((item) => (
           <li key={item.label}>

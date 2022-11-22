@@ -23,6 +23,7 @@
     "@fontsource/baloo-2": "^4.5.10",
     "@fontsource/exo": "^4.5.10",
     "@fontsource/red-hat-mono": "^4.5.11",
+    "clsx": "^1.2.1",
     "color": "^4.2.3",
     "fast-glob": "^3.2.12",
     "gray-matter": "^4.0.3",
