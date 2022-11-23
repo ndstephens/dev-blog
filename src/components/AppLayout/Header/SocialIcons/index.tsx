@@ -5,17 +5,19 @@ export function SocialIcons() {
   return (
     <ul className="flex md:ml-4 md:h-full">
       <SocialLink href="https://github.com/ndstephens" title="Github">
+        <GithubIcon aria-hidden aria-labelledby="github" />
         <span className="sr-only" id="github">
           Nate Stephens on Github
         </span>
-        <GithubIcon aria-hidden aria-labelledby="github" />
       </SocialLink>
       <SocialLink
         href="https://www.linkedin.com/in/ndstephens/"
         title="LinkedIn"
       >
-        <span className="sr-only">Nate Stephens on LinkedIn</span>
-        <LinkedInIcon aria-hidden />
+        <LinkedInIcon aria-hidden aria-labelledby="linkedin" />
+        <span className="sr-only" id="linkedin">
+          Nate Stephens on LinkedIn
+        </span>
       </SocialLink>
     </ul>
   );

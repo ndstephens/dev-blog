@@ -1,4 +1,5 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document';
+import Script from 'next/script';
 
 export default class MyDocument extends Document {
   // TODO: add SEO meta tags, etc, to Head element
@@ -8,7 +9,8 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="en" dir="ltr" className="dark">
-        <Head />
+        <Head>{/* <meta name="theme-color" content="#f8fafc" /> */}</Head>
+        <Script src="/scripts/theme.js" strategy="beforeInteractive" />
         <body>
           <Main />
           <NextScript />

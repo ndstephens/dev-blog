@@ -7,12 +7,12 @@
   :where(*) {
     @apply antialiased;
 
-    @apply motion-safe:transition-colors;
-    @apply motion-safe:duration-300;
+    /* @apply motion-safe:transition-colors;
+    @apply motion-safe:duration-300; */
 
-    @apply motion-reduce:!animate-none;
+    /* @apply motion-reduce:!animate-none;
     @apply motion-reduce:!transform-none;
-    @apply motion-reduce:!transition-none;
+    @apply motion-reduce:!transition-none; */
   }
 
   :where(html, body, #__next) {
@@ -23,11 +23,15 @@
     @apply scroll-smooth;
   }
 
+  html.dark {
+    color-scheme: dark;
+  }
+
   :where(body) {
-    @apply bg-surfaceClr-1;
     @apply text-textClr-base;
-    /* @apply motion-safe:transition-colors;
-    @apply motion-safe:duration-300; */
+    @apply bg-surfaceClr-1;
+    @apply motion-safe:transition-colors;
+    @apply motion-safe:duration-300;
   }
 
   :where(#__next) {

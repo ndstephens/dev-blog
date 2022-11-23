@@ -3,10 +3,11 @@ import {
   NavLink,
 } from 'src/components/AppLayout/Header/SiteNav/NavItems';
 import { SocialIcons } from 'src/components/AppLayout/Header/SocialIcons';
+import ThemeSelect from 'src/components/AppLayout/Header/ThemeSelect';
 
 export default function SiteNav() {
   return (
-    <nav className="ml-auto flex h-full">
+    <nav className="ml-auto h-full">
       <div className="flex md:h-full">
         <ul className="font-sans text-base font-medium uppercase text-textClr-base md:flex md:h-full md:divide-x-2 md:divide-surfaceClr-2">
           <NavItemWithSubMenu
@@ -33,6 +34,7 @@ export default function SiteNav() {
             <NavLink href="/about">About</NavLink>
           </li>
         </ul>
+        <ThemeSelect />
         <SocialIcons />
       </div>
     </nav>
