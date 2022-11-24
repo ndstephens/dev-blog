@@ -1,23 +1,59 @@
 import React from 'react';
 
+import MoonIcon from 'src/assets/icons/theme/moon.svg';
+import OSIcon from 'src/assets/icons/theme/os.svg';
+import SunIcon from 'src/assets/icons/theme/sun.svg';
+
+// THEME: | LOCAL-STORAGE PROPERTY:
+// -------------------------------
+// SYSTEM: <remove property>
+// LIGHT:  "theme: light"
+// DARK:   "theme: dark"
+
 const THEME = 'theme';
-export const SYSTEM = 'system';
-export const LIGHT = 'light';
-export const DARK = 'dark';
+const SYSTEM = 'system';
+const LIGHT = 'light';
+const DARK = 'dark';
+
 type ThemeType = typeof SYSTEM | typeof LIGHT | typeof DARK;
 
+const themeOptions = {
+  [SYSTEM]: {
+    label: 'System',
+    value: SYSTEM,
+    icon: OSIcon,
+  },
+  [LIGHT]: {
+    label: 'Light',
+    value: LIGHT,
+    icon: SunIcon,
+  },
+  [DARK]: {
+    label: 'Dark',
+    value: DARK,
+    icon: MoonIcon,
+  },
+} as const;
+
+type ThemeOption = typeof themeOptions[keyof typeof themeOptions];
+
+//* OPTIONS LIST
+export const themeOptionsList = Object.values(themeOptions);
+
+//* useTheme HOOK
 export default function useTheme() {
-  // TODO: preset from local storage
-  const [selectedTheme, setSelectedTheme] = React.useState<ThemeType>(SYSTEM);
+  const [selectedTheme, setSelectedTheme] = React.useState<ThemeOption>();
 
   // Init selected theme from local-storage
   React.useEffect(() => {
-    const theme = localStorage.theme as ThemeType | undefined;
-    if (theme === LIGHT || theme === DARK) {
-      setSelectedTheme(theme);
+    const theme = localStorage.theme;
+    if (theme === LIGHT) {
+      setSelectedTheme(themeOptions[LIGHT]);
+    } else if (theme === DARK) {
+      setSelectedTheme(themeOptions[DARK]);
     } else {
       localStorage.removeItem(THEME); // clear incase of corrupted value
-      setSelectedTheme(SYSTEM);
+      setSelectedTheme(themeOptions[SYSTEM]);
     }
   }, []);
 
@@ -31,18 +67,21 @@ export default function useTheme() {
 
   // Handle theme selection update
   React.useEffect(() => {
-    if (selectedTheme === SYSTEM) {
+    if (selectedTheme === themeOptions[SYSTEM]) {
       if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         setDarkTheme();
       } else {
         setLightTheme();
       }
-    } else if (selectedTheme === DARK) {
+    } else if (selectedTheme === themeOptions[DARK]) {
       setDarkTheme();
     } else {
       setLightTheme();
     }
-    updateLocalStorage(selectedTheme);
+
+    if (selectedTheme) {
+      updateLocalStorage(selectedTheme.value);
+    }
   }, [selectedTheme]);
 
   return [selectedTheme, setSelectedTheme] as const;
@@ -67,11 +106,11 @@ function setLightTheme() {
   //   .setAttribute('content', '#f8fafc');
 }
 
-function updateLocalStorage(selectedTheme: ThemeType) {
-  if (selectedTheme === SYSTEM) {
+function updateLocalStorage(themeType: ThemeType) {
+  if (themeType === LIGHT || themeType === DARK) {
+    localStorage.theme = themeType;
+  } else {
     localStorage.removeItem(THEME);
-  } else if (selectedTheme === LIGHT || selectedTheme === DARK) {
-    localStorage.theme = selectedTheme;
   }
 }
 
