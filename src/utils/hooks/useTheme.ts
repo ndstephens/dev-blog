@@ -3,6 +3,7 @@ import React from 'react';
 import MoonIcon from 'src/assets/icons/theme/moon.svg';
 import OSIcon from 'src/assets/icons/theme/os.svg';
 import SunIcon from 'src/assets/icons/theme/sun.svg';
+import { capitalizeFirstLetter } from 'src/utils/helperFns';
 
 // THEME: | LOCAL-STORAGE PROPERTY:
 // -------------------------------
@@ -19,17 +20,17 @@ type ThemeType = typeof SYSTEM | typeof LIGHT | typeof DARK;
 
 const themeOptions = {
   [SYSTEM]: {
-    label: 'System',
+    label: capitalizeFirstLetter(SYSTEM),
     value: SYSTEM,
     icon: OSIcon,
   },
   [LIGHT]: {
-    label: 'Light',
+    label: capitalizeFirstLetter(LIGHT),
     value: LIGHT,
     icon: SunIcon,
   },
   [DARK]: {
-    label: 'Dark',
+    label: capitalizeFirstLetter(DARK),
     value: DARK,
     icon: MoonIcon,
   },
@@ -46,10 +47,10 @@ export default function useTheme() {
 
   // Init selected theme from local-storage
   React.useEffect(() => {
-    const theme = localStorage.theme;
-    if (theme === LIGHT) {
+    const savedTheme = localStorage[THEME];
+    if (savedTheme === LIGHT) {
       setSelectedTheme(themeOptions[LIGHT]);
-    } else if (theme === DARK) {
+    } else if (savedTheme === DARK) {
       setSelectedTheme(themeOptions[DARK]);
     } else {
       localStorage.removeItem(THEME); // clear incase of corrupted value
@@ -108,14 +109,14 @@ function setLightTheme() {
 
 function updateLocalStorage(themeType: ThemeType) {
   if (themeType === LIGHT || themeType === DARK) {
-    localStorage.theme = themeType;
+    localStorage[THEME] = themeType;
   } else {
     localStorage.removeItem(THEME);
   }
 }
 
 function handleSystemPrefChange(e: MediaQueryListEvent) {
-  if (!localStorage.theme) {
+  if (!localStorage[THEME]) {
     if (e.matches) {
       setDarkTheme();
     } else {
