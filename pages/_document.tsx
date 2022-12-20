@@ -9,7 +9,9 @@ export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="en" dir="ltr" className="dark">
-        <Head>{/* <meta name="theme-color" content="#f8fafc" /> */}</Head>
+        <Head>
+          <meta name="theme-color" content="#f8fafc" />
+        </Head>
         <Script src="/scripts/theme.js" strategy="beforeInteractive" />
         <body>
           <Main />

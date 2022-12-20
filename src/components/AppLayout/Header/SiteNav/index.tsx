@@ -2,7 +2,7 @@ import {
   NavItemWithSubMenu,
   NavLink,
 } from 'src/components/AppLayout/Header/SiteNav/NavItems';
-import { SocialIcons } from 'src/components/AppLayout/Header/SocialIcons';
+// import { SocialIcons } from 'src/components/AppLayout/Header/SocialIcons';
 import ThemeSelect from 'src/components/AppLayout/Header/ThemeSelect';
 
 export default function SiteNav() {
@@ -35,7 +35,8 @@ export default function SiteNav() {
           </li>
         </ul>
         <ThemeSelect />
-        <SocialIcons />
+        {/*// TODO: MOVE THIS ELSEWHERE */}
+        {/* <SocialIcons /> */}
       </div>
     </nav>
   );

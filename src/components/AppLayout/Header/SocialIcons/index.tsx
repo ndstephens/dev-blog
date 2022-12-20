@@ -1,5 +1,5 @@
-import GithubIcon from 'src/assets/icons/social/github.svg';
-import LinkedInIcon from 'src/assets/icons/social/linkedin.svg';
+import GithubIcon from '@assets/icons/social/github.svg';
+import LinkedInIcon from '@assets/icons/social/linkedin.svg';
 
 export function SocialIcons() {
   return (
@@ -38,7 +38,7 @@ function SocialLink({ children, href, title }: SocialLinkProps) {
         href={href}
         target="_blank"
         rel="noreferrer"
-        className="[&_svg]:max-w-5 p-2 text-textClr-base [&_svg]:w-5"
+        className="p-2 text-textClr-base [&_svg]:w-5"
       >
         {children}
       </a>

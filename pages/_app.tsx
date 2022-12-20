@@ -4,7 +4,7 @@ import Head from 'next/head';
 
 import { AppLayout } from 'src/components/AppLayout';
 // import ErrorBoundary from 'src/components/ErrorBoundary';
-import { printWebVitalMetric } from 'src/utils/webMetrics';
+import { printWebVitalMetric } from 'src/webMetrics';
 
 // Font imports
 import '@fontsource/baloo-2/variable.css';

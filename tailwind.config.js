@@ -1,5 +1,6 @@
-const plugin = require('tailwindcss/plugin');
 const defaultTheme = require('tailwindcss/defaultTheme');
+const plugin = require('tailwindcss/plugin');
+
 const Color = require('color');
 
 /* =============================================
@@ -69,6 +70,10 @@ module.exports = {
         },
         primaryClr: {
           1: withOpacity('var(--color-primary-1)'),
+          3: withOpacity('var(--color-primary-3)'),
+          DEFAULT: withOpacity('var(--color-primary-5)'),
+          7: withOpacity('var(--color-primary-7)'),
+          9: withOpacity('var(--color-primary-9)'),
         },
       },
       spacing: {
@@ -82,7 +87,7 @@ module.exports = {
     // require('@tailwindcss/aspect-ratio'),
     // require('@tailwindcss/line-clamp'),
     // require('@tailwindcss/container-queries'),
-    // require('@headlessui/tailwindcss'),
+    require('@headlessui/tailwindcss'),
     plugin(function ({ addBase, addUtilities, addVariant, theme }) {
       addUtilities({
         '.content-auto': {
@@ -102,8 +107,13 @@ module.exports = {
           '--color-surface-2': asChannels(theme('colors.slate.200')),
           '--color-surface-3': asChannels(theme('colors.slate.300')),
           '--color-surface-4': asChannels(theme('colors.slate.400')),
-          // OTHER
-          '--color-primary-1': asChannels(theme('colors.red.600')),
+          // PRIMARY
+          // TODO: need to decide on these...
+          '--color-primary-1': asChannels(theme('colors.red.100')),
+          '--color-primary-3': asChannels(theme('colors.red.300')),
+          '--color-primary-5': asChannels(theme('colors.red.500')),
+          '--color-primary-7': asChannels(theme('colors.red.700')),
+          '--color-primary-9': asChannels(theme('colors.red.900')),
         },
         //? DARK-MODE COLORS
         'html.dark': {
@@ -115,8 +125,12 @@ module.exports = {
           '--color-surface-2': asChannels(theme('colors.slate.800')),
           '--color-surface-3': asChannels(theme('colors.slate.700')),
           '--color-surface-4': asChannels(theme('colors.slate.600')),
-          // OTHER
-          '--color-primary-1': asChannels(theme('colors.sky.500')),
+          // PRIMARY
+          '--color-primary-1': asChannels(theme('colors.sky.100')),
+          '--color-primary-3': asChannels(theme('colors.sky.300')),
+          '--color-primary-5': asChannels(theme('colors.sky.500')),
+          '--color-primary-7': asChannels(theme('colors.sky.700')),
+          '--color-primary-9': asChannels(theme('colors.sky.900')),
         },
       });
     }),

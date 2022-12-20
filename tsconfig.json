@@ -12,6 +12,10 @@
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,
+    "paths": {
+      "@assets/*": ["./src/assets/*"],
+      "@hooks/*": ["./src/hooks/*"]
+    },
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,

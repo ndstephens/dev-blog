@@ -1,8 +1,7 @@
 import { useRef } from 'react';
+import { useNavHoverAndClick } from '@hooks/useNavHoverAndClick';
 import clsx from 'clsx';
 import Link from 'next/link';
-
-import { useNavHoverAndClick } from 'src/utils/hooks/useNavHoverAndClick';
 
 /* =============================================
             NAV ITEM WITH SUB-MENU
