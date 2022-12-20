@@ -1,4 +1,4 @@
-import MaxWidthWrapper from 'src/components/shared/MaxWidthWrapper';
+import MaxWidthWrapper from '@ui/shared/MaxWidthWrapper';
 
 interface Props {
   children: React.ReactNode;

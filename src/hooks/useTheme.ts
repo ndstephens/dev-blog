@@ -4,8 +4,7 @@ import { useUpdateEffect } from 'usehooks-ts';
 
 import MoonIcon from '@assets/icons/theme/moon.svg';
 import SunIcon from '@assets/icons/theme/sun.svg';
-
-import { capitalizeFirstLetter } from 'src/utils/stringFns';
+import { capitalizeFirstLetter } from '@utils/stringFns';
 
 // THEME: | LOCAL-STORAGE PROPERTY:
 // -------------------------------

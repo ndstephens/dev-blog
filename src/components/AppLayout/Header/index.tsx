@@ -1,6 +1,6 @@
-import Logo from 'src/components/AppLayout/Header/Logo';
-import SiteNav from 'src/components/AppLayout/Header/SiteNav';
-import MaxWidthWrapper from 'src/components/shared/MaxWidthWrapper';
+import Logo from '@ui/AppLayout/Header/Logo';
+import SiteNav from '@ui/AppLayout/Header/SiteNav';
+import MaxWidthWrapper from '@ui/shared/MaxWidthWrapper';
 
 export function Header() {
   return (

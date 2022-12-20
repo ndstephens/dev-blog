@@ -2,8 +2,9 @@ import type { AppProps, NextWebVitalsMetric } from 'next/app';
 
 import Head from 'next/head';
 
-import { AppLayout } from 'src/components/AppLayout';
-// import ErrorBoundary from 'src/components/ErrorBoundary';
+import { AppLayout } from '@ui/AppLayout';
+
+// import ErrorBoundary from '@ui/ErrorBoundary';
 import { printWebVitalMetric } from 'src/webMetrics';
 
 // Font imports

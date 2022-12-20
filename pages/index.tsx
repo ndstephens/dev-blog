@@ -1,9 +1,10 @@
 import type { GetStaticProps, InferGetStaticPropsType } from 'next';
 import type { PostMeta } from 'src/postsApi/postConfig';
 
-import PageContentWrapper from 'src/components/PageLayout/PageContentWrapper';
-import PageHeader from 'src/components/PageLayout/PageHeader';
-// import PostPreview from 'src/components/PostPreview';
+import PageContentWrapper from '@ui/PageLayout/PageContentWrapper';
+import PageHeader from '@ui/PageLayout/PageHeader';
+
+// import PostPreview from '@ui/PostPreview';
 import {
   extractPostMeta,
   getAllPosts,

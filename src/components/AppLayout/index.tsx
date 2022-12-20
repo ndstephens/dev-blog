@@ -1,4 +1,4 @@
-import { Header } from 'src/components/AppLayout/Header';
+import { Header } from '@ui/AppLayout/Header';
 
 interface AppLayoutProps {
   children: React.ReactNode;

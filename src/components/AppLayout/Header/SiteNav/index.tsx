@@ -1,9 +1,9 @@
 import {
   NavItemWithSubMenu,
   NavLink,
-} from 'src/components/AppLayout/Header/SiteNav/NavItems';
-// import { SocialIcons } from 'src/components/AppLayout/Header/SocialIcons';
-import ThemeSelect from 'src/components/AppLayout/Header/ThemeSelect';
+} from '@ui/AppLayout/Header/SiteNav/NavItems';
+// import { SocialIcons } from '@ui/AppLayout/Header/SocialIcons';
+import ThemeSelect from '@ui/AppLayout/Header/ThemeSelect';
 
 export default function SiteNav() {
   return (
