@@ -1,8 +1,10 @@
 import React from 'react';
+
 import { useUpdateEffect } from 'usehooks-ts';
 
-import MoonIcon from 'src/assets/icons/theme/moon.svg';
-import SunIcon from 'src/assets/icons/theme/sun.svg';
+import MoonIcon from '@assets/icons/theme/moon.svg';
+import SunIcon from '@assets/icons/theme/sun.svg';
+
 import { capitalizeFirstLetter } from 'src/utils/stringFns';
 
 // THEME: | LOCAL-STORAGE PROPERTY:

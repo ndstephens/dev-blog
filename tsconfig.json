@@ -13,6 +13,7 @@
     "moduleResolution": "node",
     "noEmit": true,
     "paths": {
+      // Add these to eslint file under simple-import-sort
       "@assets/*": ["./src/assets/*"],
       "@hooks/*": ["./src/hooks/*"]
     },

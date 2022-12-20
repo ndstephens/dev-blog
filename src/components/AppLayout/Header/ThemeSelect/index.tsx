@@ -1,5 +1,7 @@
 import React from 'react';
+
 import { Listbox } from '@headlessui/react';
+
 import { themeOptionsList, useTheme, useThemeIcons } from '@hooks/useTheme';
 
 export default function ThemeSelect() {

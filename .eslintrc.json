@@ -17,10 +17,14 @@
           ],
           // Type imports
           ["^@?\\w.*\\u0000$", "^[^.].*\\u0000$", "^\\..*\\u0000$"],
-          // NPM packages. `react` related packages come first
-          ["^react", "^@react", "^@?\\w"],
+          // React and Next related packages come first
+          ["^react", "^next"],
+          // NPM packages
+          ["^@?\\w"],
           // Side effect imports
           ["^\\u0000"],
+          // Path aliased
+          ["^@assets", "@hooks"],
           // Absolute imports
           ["^(src|public)(/.*|$)"],
           // Parent imports. Put `..` last
