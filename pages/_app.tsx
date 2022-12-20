@@ -8,7 +8,8 @@ import { AppLayout } from '@ui/AppLayout';
 import { printWebVitalMetric } from 'src/webMetrics';
 
 // Font imports
-import '@fontsource/baloo-2/variable.css';
+// import '@fontsource/baloo-2/variable.css';
+import '@fontsource/albert-sans/variable.css';
 import '@fontsource/exo/variable.css';
 import '@fontsource/exo/variable-italic.css';
 import '@fontsource/red-hat-mono/variable.css';

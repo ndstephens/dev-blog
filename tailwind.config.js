@@ -53,7 +53,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        display: ['"Baloo 2Variable"', ...defaultTheme.fontFamily.serif],
+        display: ['"Albert SansVariable"', ...defaultTheme.fontFamily.serif],
         sans: ['ExoVariable', ...defaultTheme.fontFamily.sans],
         mono: ['"Red Hat MonoVariable"', ...defaultTheme.fontFamily.mono],
       },
