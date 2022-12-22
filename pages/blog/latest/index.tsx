@@ -19,7 +19,7 @@ export default function BlogLatestPage({
     <>
       <PageContentWrapper bgColor="bg-surfaceClr-2">
         <PageHeader>
-          <h1 className="text-7xl font-bold text-textClr-base">Hello</h1>
+          <h1 className="text-7xl font-bold text-textClr-1">Hello</h1>
         </PageHeader>
       </PageContentWrapper>
       <PageContentWrapper>

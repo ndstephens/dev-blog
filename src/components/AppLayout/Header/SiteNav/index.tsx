@@ -1,15 +1,17 @@
+// import { Popover } from '@headlessui/react';
+
 import {
+  NavItem,
   NavItemWithSubMenu,
-  NavLink,
 } from '@ui/AppLayout/Header/SiteNav/NavItems';
 // import { SocialIcons } from '@ui/AppLayout/Header/SocialIcons';
 import ThemeSelect from '@ui/AppLayout/Header/ThemeSelect';
 
 export default function SiteNav() {
   return (
-    <nav className="ml-auto h-full">
+    <nav className="ml-auto h-full font-sans text-base font-medium uppercase text-textClr-3">
       <div className="flex md:h-full">
-        <ul className="font-sans text-base font-medium uppercase text-textClr-base md:flex md:h-full md:divide-x-2 md:divide-surfaceClr-2">
+        <ul className="md:flex md:h-full md:divide-x-2 md:divide-surfaceClr-2">
           <NavItemWithSubMenu
             label="Blog"
             menuItems={[
@@ -27,12 +29,8 @@ export default function SiteNav() {
               },
             ]}
           />
-          <li className="md:h-full">
-            <NavLink href="/projects">Projects</NavLink>
-          </li>
-          <li className="md:h-full">
-            <NavLink href="/about">About</NavLink>
-          </li>
+          <NavItem href="/projects">Projects</NavItem>
+          <NavItem href="/about">About</NavItem>
         </ul>
         <ThemeSelect />
         {/*// TODO: MOVE THIS ELSEWHERE */}

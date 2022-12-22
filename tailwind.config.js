@@ -59,8 +59,9 @@ module.exports = {
       },
       colors: {
         textClr: {
-          base: withOpacity('var(--color-text-base)'),
-          dim: withOpacity('var(--color-text-dim)'),
+          1: withOpacity('var(--color-text-1)'),
+          2: withOpacity('var(--color-text-2)'),
+          3: withOpacity('var(--color-text-3)'),
         },
         surfaceClr: {
           1: withOpacity('var(--color-surface-1)'),
@@ -100,8 +101,9 @@ module.exports = {
         //? LIGHT-MODE COLORS
         html: {
           // TEXT
-          '--color-text-base': asChannels(theme('colors.slate.900')),
-          '--color-text-dim': asChannels(theme('colors.slate.800')),
+          '--color-text-1': asChannels(theme('colors.slate.900')),
+          '--color-text-2': asChannels(theme('colors.slate.700')),
+          '--color-text-3': asChannels(theme('colors.slate.500')),
           // SURFACE
           '--color-surface-1': asChannels(theme('colors.slate.50')),
           '--color-surface-2': asChannels(theme('colors.slate.200')),
@@ -118,8 +120,9 @@ module.exports = {
         //? DARK-MODE COLORS
         'html.dark': {
           // TEXT
-          '--color-text-base': asChannels(theme('colors.slate.50')),
-          '--color-text-dim': asChannels(theme('colors.slate.200')),
+          '--color-text-1': asChannels(theme('colors.slate.50')),
+          '--color-text-2': asChannels(theme('colors.slate.200')),
+          '--color-text-3': asChannels(theme('colors.slate.400')),
           // SURFACE
           '--color-surface-1': asChannels(theme('colors.slate.900')),
           '--color-surface-2': asChannels(theme('colors.slate.800')),

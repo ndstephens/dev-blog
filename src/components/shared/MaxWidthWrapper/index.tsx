@@ -1,21 +1,36 @@
-import clsx from 'clsx';
+import React from 'react';
 
-interface MaxWidthWrapperProps {
+import { cva, VariantProps } from 'class-variance-authority';
+
+const commonClasses = 'mx-auto h-full max-w-[calc(1024px+64px)]';
+const headerClasses = 'px-[32px]';
+const pageClasses =
+  'px-[32px] min-[1088px]:border-x-[4px] min-[1088px]:border-surfaceClr-2 min-[1088px]:px-[28px]';
+
+const wrapper = cva(commonClasses, {
+  variants: {
+    intent: {
+      header: headerClasses,
+      page: pageClasses,
+    },
+  },
+});
+
+interface MaxWidthWrapperProps
+  extends React.HTMLAttributes<HTMLDivElement>,
+    VariantProps<typeof wrapper> {
   children: React.ReactNode;
-  type: 'header' | 'page';
+  intent: 'header' | 'page';
 }
 
 export default function MaxWidthWrapper({
   children,
-  type,
+  intent,
+  className,
+  ...props
 }: MaxWidthWrapperProps) {
   return (
-    <div
-      className={clsx('mx-auto h-full max-w-[calc(1024px+64px)]', {
-        'px-[32px]': type === 'header',
-        'border-x-[8px] border-surfaceClr-4 px-[24px]': type === 'page',
-      })}
-    >
+    <div className={wrapper({ intent, className })} {...props}>
       {children}
     </div>
   );

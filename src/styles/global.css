@@ -4,6 +4,10 @@
 @tailwind base;
 @layer base {
   /* TODO: universally remove all outlines on focus ?? */
+  *:focus {
+    outline: none;
+  }
+
   :where(*) {
     @apply antialiased;
 
@@ -23,12 +27,12 @@
     @apply scroll-smooth;
   }
 
-  html.dark {
+  /* html.dark {
     color-scheme: dark;
-  }
+  } */
 
   :where(body) {
-    @apply text-textClr-base;
+    @apply text-textClr-1;
     @apply bg-surfaceClr-1;
     @apply motion-safe:transition-colors;
     @apply motion-safe:duration-300;
@@ -44,6 +48,12 @@
 
   :where(button, nav *) {
     @apply select-none;
+  }
+
+  /** OVERRIDE TAILWIND PREFLIGHT */
+  button,
+  select {
+    text-transform: inherit;
   }
 }
 

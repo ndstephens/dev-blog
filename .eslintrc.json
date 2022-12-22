@@ -18,7 +18,7 @@
           // Type imports
           ["^@?\\w.*\\u0000$", "^[^.].*\\u0000$", "^\\..*\\u0000$"],
           // React and Next related packages come first
-          ["^react", "^next"],
+          ["^react", "^@react", "^next", "^@next"],
           // NPM packages
           ["^@?\\w"],
           // Side effect imports

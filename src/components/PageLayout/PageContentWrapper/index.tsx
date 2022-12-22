@@ -11,7 +11,7 @@ export default function PageContentWrapper({
 }: Props) {
   return (
     <div className={bgColor}>
-      <MaxWidthWrapper type="page">{children}</MaxWidthWrapper>
+      <MaxWidthWrapper intent="page">{children}</MaxWidthWrapper>
     </div>
   );
 }

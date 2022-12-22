@@ -38,7 +38,7 @@ function SocialLink({ children, href, title }: SocialLinkProps) {
         href={href}
         target="_blank"
         rel="noreferrer"
-        className="p-2 text-textClr-base [&_svg]:w-5"
+        className="p-2 text-textClr-1 [&_svg]:w-5"
       >
         {children}
       </a>
