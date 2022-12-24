@@ -95,7 +95,7 @@ module.exports = {
           'content-visibility': 'auto',
         },
       });
-      addVariant('hocus', ['&:hover', '&:focus']);
+      addVariant('hocus-within', ['&:hover', '&:focus-within']);
       addBase({
         // -inverted, -muted, -accent, -accent-hover
         //? LIGHT-MODE COLORS
