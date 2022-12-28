@@ -11,7 +11,7 @@ export default function SiteNav() {
   return (
     <nav
       aria-label="Main"
-      className="ml-auto h-full font-sans text-base font-medium uppercase text-textClr-3"
+      className="ml-auto h-full font-sans text-base font-medium uppercase tracking-wide text-textClr-3"
     >
       <div className="flex md:h-full">
         <ul

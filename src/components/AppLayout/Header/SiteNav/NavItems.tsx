@@ -30,7 +30,7 @@ export const NavItem = ({
       <Link href={href}>
         <a
           aria-current={isActivePage && 'page'}
-          className="flex h-full items-center px-5 transition-colors aria-[current=page]:text-textClr-1 hocus-within:text-textClr-1"
+          className="flex h-full items-center px-6 transition-colors aria-[current=page]:text-textClr-1 hocus-within:text-textClr-1"
         >
           {children}
         </a>
@@ -59,12 +59,12 @@ export function NavItemWithSubMenu({ label, menuItems }: Props) {
         <>
           <Popover.Button
             className={clsx(
-              'flex items-center px-5 hover:text-textClr-1 ui-open:text-textClr-1 md:h-full',
+              'flex items-center px-6 hover:text-textClr-1 ui-open:text-textClr-1 md:h-full',
               isActivePage ? 'text-textClr-1' : 'text-textClr-3'
             )}
           >
             {label}
-            <MenuArrow aria-hidden className="ml-1 w-3.5" />
+            <MenuArrow aria-hidden className="ml-1 w-4" />
           </Popover.Button>
 
           <AnimatePresence>
@@ -84,7 +84,7 @@ export function NavItemWithSubMenu({ label, menuItems }: Props) {
                     key={item.label}
                     href={item.href}
                     onClick={() => close()}
-                    className="md:h-9"
+                    className="md:h-8"
                   >
                     {item.label}
                   </NavItem>

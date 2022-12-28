@@ -19,16 +19,16 @@ export default function ThemeSelect() {
       by="value"
       onChange={setSelectedTheme}
       as="div"
-      className="relative -mr-5"
+      className="relative -mr-6"
     >
       {({ open }) => (
         <>
           <Listbox.Label className="sr-only">UI Theme:</Listbox.Label>
-          <Listbox.Button className="flex place-items-center px-5 text-textClr-1 md:h-full">
+          <Listbox.Button className="flex place-items-center px-6 text-textClr-1 md:h-full">
             <SelectedIcon
               aria-hidden
               aria-labelledby="selectedTheme"
-              className="w-5"
+              className="w-[1.25rem]"
             />
             <span className="sr-only" id="selectedTheme">
               {selectedTheme.label}
@@ -53,10 +53,10 @@ export default function ThemeSelect() {
                     <Listbox.Option
                       key={value}
                       value={themeOption}
-                      className="flex cursor-pointer items-center justify-between px-5 ui-selected:text-textClr-1 ui-active:text-textClr-1 md:h-9"
+                      className="flex cursor-pointer items-center justify-between px-6 transition-colors ui-selected:text-textClr-1 ui-active:text-textClr-1 md:h-8"
                     >
                       <span>{label}</span>
-                      <Icon className="ml-3 w-5" />
+                      <Icon className="ml-3 w-[1.25rem]" />
                     </Listbox.Option>
                   );
                 })}
