@@ -2,6 +2,8 @@ import type { AppProps, NextWebVitalsMetric } from 'next/app';
 
 import Head from 'next/head';
 
+import { MotionConfig } from 'framer-motion';
+
 import { AppLayout } from '@ui/AppLayout';
 
 // import ErrorBoundary from '@ui/ErrorBoundary';
@@ -27,9 +29,11 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         />
       </Head>
       {/* <ErrorBoundary> */}
-      <AppLayout>
-        <Component {...pageProps} />
-      </AppLayout>
+      <MotionConfig reducedMotion="user">
+        <AppLayout>
+          <Component {...pageProps} />
+        </AppLayout>
+      </MotionConfig>
       {/* </ErrorBoundary> */}
     </>
   );
