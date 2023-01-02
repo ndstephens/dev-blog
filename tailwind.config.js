@@ -112,6 +112,9 @@ module.exports = {
         sans: ['ExoVariable', ...defaultTheme.fontFamily.sans],
         mono: ['"Red Hat MonoVariable"', ...defaultTheme.fontFamily.mono],
       },
+      spacing: {
+        headerHeight: '48px',
+      },
       colors: {
         textClr: {
           1: withOpacity('var(--color-text-1)'),
@@ -131,9 +134,6 @@ module.exports = {
           7: withOpacity('var(--color-primary-7)'),
           9: withOpacity('var(--color-primary-9)'),
         },
-      },
-      spacing: {
-        headerHeight: '48px',
       },
     },
   },
@@ -161,9 +161,9 @@ module.exports = {
           '--color-text-3': asChannels(theme('colors.slate.500')),
           // SURFACE
           '--color-surface-1': asChannels(theme('colors.slate.50')),
-          '--color-surface-2': asChannels(theme('colors.slate.200')),
-          '--color-surface-3': asChannels(theme('colors.slate.300')),
-          '--color-surface-4': asChannels(theme('colors.slate.400')),
+          '--color-surface-2': asChannels(theme('colors.slate.100')),
+          '--color-surface-3': asChannels(theme('colors.slate.200')),
+          '--color-surface-4': asChannels(theme('colors.slate.300')),
           // PRIMARY
           // TODO: need to decide on these...
           '--color-primary-1': asChannels(theme('colors.red.100')),

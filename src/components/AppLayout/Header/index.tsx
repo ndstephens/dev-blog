@@ -1,16 +1,20 @@
-import Logo from '@ui/AppLayout/Header/Logo';
-import SiteNav from '@ui/AppLayout/Header/SiteNav';
+import Logo from '@ui/AppLayout/Logo';
+import SiteNavDesktop from '@ui/AppLayout/SiteNavDesktop';
+import SiteNavMobile from '@ui/AppLayout/SiteNavMobile';
 import MaxWidthWrapper from '@ui/shared/MaxWidthWrapper';
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-10 h-headerHeight bg-surfaceClr-1">
+    <div className="sticky top-0 z-[200] h-headerHeight shrink-0 bg-surfaceClr-1">
       <MaxWidthWrapper intent="header">
-        <div className="flex h-full">
+        <header className="flex h-full">
           <Logo />
-          <SiteNav />
-        </div>
+          <div className="ml-auto h-full font-sans text-lg font-medium uppercase tracking-wide text-textClr-3 md:text-base">
+            <SiteNavDesktop />
+            <SiteNavMobile />
+          </div>
+        </header>
       </MaxWidthWrapper>
-    </header>
+    </div>
   );
 }

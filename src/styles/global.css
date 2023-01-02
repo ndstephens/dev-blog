@@ -5,18 +5,17 @@
 @layer base {
   /* TODO: universally remove all outlines on focus ?? */
   *:focus {
-    outline: none;
+    @apply outline-none;
   }
 
   :where(*) {
     @apply antialiased;
 
-    /* @apply motion-safe:transition-colors;
-    @apply motion-safe:duration-300; */
+    @apply motion-reduce:!animate-none;
+    @apply motion-reduce:!transition-none;
 
-    /* @apply motion-reduce:!animate-none;
-    @apply motion-reduce:!transform-none;
-    @apply motion-reduce:!transition-none; */
+    transition-property: background-color, border-color;
+    transition-duration: 150ms;
   }
 
   :where(html, body, #__next) {
@@ -27,19 +26,12 @@
     @apply scroll-smooth;
   }
 
-  /* html.dark {
-    color-scheme: dark;
-  } */
-
   :where(body) {
-    @apply text-textClr-1;
-    @apply bg-surfaceClr-1;
-    @apply motion-safe:transition-colors;
-    @apply motion-safe:duration-300;
+    @apply bg-surfaceClr-1 text-textClr-1;
   }
 
   :where(#__next) {
-    @apply isolate;
+    @apply isolate flex flex-col;
   }
 
   :where(h1, h2, h3, h4, h5, h6) {
@@ -54,6 +46,7 @@
   button,
   select {
     text-transform: inherit;
+    letter-spacing: inherit;
   }
 }
 
@@ -70,10 +63,3 @@
 /**================================================
 /**               GLOBAL VARIABLES                =
 /**==============================================*/
-@layer base {
-  :where(html) {
-    /* LAYOUT */
-    /* HEADER */
-    /* --header-height: theme(spacing.12); */
-  }
-}

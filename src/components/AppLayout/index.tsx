@@ -8,7 +8,7 @@ export function AppLayout({ children }: AppLayoutProps) {
   return (
     <>
       <Header />
-      <main className="relative z-[5]">{children}</main>
+      <main className="relative z-[100] flex flex-1 flex-col">{children}</main>
     </>
   );
 }

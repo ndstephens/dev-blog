@@ -28,7 +28,7 @@ export default function HomePage({
             {postsMeta.map((postMeta) => (
               <li key={postMeta.title}>
                 {/* <PostPreview postMeta={postMeta} /> */}
-                <pre>{JSON.stringify(postMeta, null, 2)}</pre>
+                {/* <pre>{JSON.stringify(postMeta, null, 2)}</pre> */}
               </li>
             ))}
           </ul>
