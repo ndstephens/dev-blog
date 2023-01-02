@@ -2,10 +2,11 @@ import React from 'react';
 
 import { cva, VariantProps } from 'class-variance-authority';
 
-const commonClasses = 'mx-auto h-full max-w-[calc(1024px+64px)]';
-const headerClasses = 'px-4 xs:px-6 sm:px-8';
+const commonClasses =
+  'px-4 xs:px-6 sm:px-8 mx-auto h-full max-w-[calc(1024px+64px)]';
+const headerClasses = '';
 const pageClasses =
-  'px-4 xs:px-6 sm:px-8 min-[1088px]:border-x-1 min-[1088px]:border-surfaceClr-2 min-[1088px]:px-[28px]';
+  'min-[1088px]:border-x-[4px] border-surfaceClr-2 min-[1088px]:px-[28px]';
 
 const wrapper = cva(commonClasses, {
   variants: {
