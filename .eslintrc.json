@@ -23,8 +23,8 @@
           ["^@?\\w"],
           // Side effect imports
           ["^\\u0000"],
-          // Path aliased
-          ["^@assets", "@hooks", "@ui", "@utils"],
+          //* Path aliased
+          ["^@assets", "@config", "@hooks", "@ui", "@utils"],
           // Absolute imports
           ["^(src|public)(/.*|$)"],
           // Parent imports. Put `..` last

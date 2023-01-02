@@ -15,6 +15,7 @@
     "paths": {
       // Add these to eslint file under simple-import-sort
       "@assets/*": ["./src/assets/*"],
+      "@config/*": ["./src/config/*"],
       "@hooks/*": ["./src/hooks/*"],
       "@ui/*": ["./src/components/*"],
       "@utils/*": ["./src/utils/*"]
