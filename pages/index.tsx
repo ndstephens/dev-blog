@@ -8,7 +8,7 @@ import PageHeader from '@ui/PageLayout/PageHeader';
 import {
   extractPostMeta,
   getAllPosts,
-  limitToRecentPosts,
+  getSliceOfPosts,
   sortPostsByDate,
 } from 'src/postsApi/fetchLocalPosts';
 
@@ -48,7 +48,7 @@ interface StaticProps {
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   const allPosts = await getAllPosts();
   const sortedPosts = allPosts.sort(sortPostsByDate);
-  const recentPosts = limitToRecentPosts(sortedPosts, 10);
+  const recentPosts = getSliceOfPosts({ posts: sortedPosts });
   const postsMeta = recentPosts.map(extractPostMeta);
 
   if (!allPosts) {

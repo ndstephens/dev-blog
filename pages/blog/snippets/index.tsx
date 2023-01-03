@@ -3,7 +3,7 @@ import type { PostMeta } from 'src/postsApi/postConfig';
 
 import {
   extractPostMeta,
-  getAllPostsByType,
+  getAllPostsByCategory,
   sortPostsByDate,
 } from 'src/postsApi/fetchLocalPosts';
 
@@ -32,7 +32,7 @@ interface StaticProps {
 }
 
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
-  const allPosts = await getAllPostsByType('snippets');
+  const allPosts = await getAllPostsByCategory('snippets');
   const sortedPosts = allPosts.sort(sortPostsByDate);
   const postsMeta = sortedPosts.map(extractPostMeta);
 

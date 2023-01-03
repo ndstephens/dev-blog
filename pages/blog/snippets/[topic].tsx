@@ -9,7 +9,7 @@ import {
   extractPostMeta,
   filterPostByTopic,
   getAllPosts,
-  getAllPostsByType,
+  getAllPostsByCategory,
   getAllPostTopicsInUse,
   sortPostsByDate,
 } from 'src/postsApi/fetchLocalPosts';
@@ -46,7 +46,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async ({
   params,
 }) => {
   const { topic } = params as { topic: PostTopic };
-  const allPosts = await getAllPostsByType('snippets');
+  const allPosts = await getAllPostsByCategory('snippets');
   const allPostsWithTopic = allPosts.filter((post) =>
     filterPostByTopic(post, topic)
   );
