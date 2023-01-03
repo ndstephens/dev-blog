@@ -1,5 +1,6 @@
 import { blogRoutes, primaryRoutes } from '@config/routes';
-import ThemeSelect from '@ui/AppLayout/ThemeSelect';
+
+import ThemeSelect from '../ThemeSelect';
 
 import { NavItemWithSubMenu, NavLink } from './NavLinks';
 

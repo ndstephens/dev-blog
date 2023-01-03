@@ -1,7 +1,8 @@
-import Logo from '@ui/AppLayout/Logo';
-import SiteNavDesktop from '@ui/AppLayout/SiteNavDesktop';
-import SiteNavMobile from '@ui/AppLayout/SiteNavMobile';
 import MaxWidthWrapper from '@ui/shared/MaxWidthWrapper';
+
+import Logo from './Logo';
+import SiteNavDesktop from './SiteNavDesktop';
+import SiteNavMobile from './SiteNavMobile';
 
 export function Header() {
   return (

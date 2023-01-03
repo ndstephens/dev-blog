@@ -7,7 +7,8 @@ import { AnimatePresence, motion as m } from 'framer-motion';
 
 import MenuIcon from '@assets/icons/menu/menu.svg';
 import { blogRoutes, primaryRoutes } from '@config/routes';
-import ThemeSelect from '@ui/AppLayout/ThemeSelect';
+
+import ThemeSelect from '../ThemeSelect';
 
 export default function SiteNavMobile() {
   return (
