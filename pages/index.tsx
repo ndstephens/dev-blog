@@ -1,16 +1,10 @@
+import type { PostMeta } from '@scripts/posts/postConfig';
 import type { GetStaticProps, InferGetStaticPropsType } from 'next';
-import type { PostMeta } from 'src/postsApi/postConfig';
-
-import PageContentWrapper from '@ui/PageLayout/PageContentWrapper';
-import PageHeader from '@ui/PageLayout/PageHeader';
 
 // import PostPreview from '@ui/PostPreview';
-import {
-  extractPostMeta,
-  getAllPosts,
-  getSliceOfPosts,
-  sortPostsByDate,
-} from 'src/postsApi/fetchLocalPosts';
+import { extractPostMeta, getAllPosts, sortPostsByDate } from '@scripts/posts';
+import PageContentWrapper from '@ui/PageLayout/PageContentWrapper';
+import PageHeader from '@ui/PageLayout/PageHeader';
 
 export default function HomePage({
   postsMeta,
@@ -28,7 +22,7 @@ export default function HomePage({
             {postsMeta.map((postMeta) => (
               <li key={postMeta.title}>
                 {/* <PostPreview postMeta={postMeta} /> */}
-                {/* <pre>{JSON.stringify(postMeta, null, 2)}</pre> */}
+                <pre>{JSON.stringify(postMeta, null, 2)}</pre>
               </li>
             ))}
           </ul>
@@ -48,8 +42,7 @@ interface StaticProps {
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   const allPosts = await getAllPosts();
   const sortedPosts = allPosts.sort(sortPostsByDate);
-  const recentPosts = getSliceOfPosts({ posts: sortedPosts });
-  const postsMeta = recentPosts.map(extractPostMeta);
+  const postsMeta = sortedPosts.map(extractPostMeta);
 
   if (!allPosts) {
     return {
