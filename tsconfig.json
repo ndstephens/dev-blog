@@ -17,6 +17,7 @@
       "@assets/*": ["./src/assets/*"],
       "@config/*": ["./src/config/*"],
       "@hooks/*": ["./src/hooks/*"],
+      "@scripts/*": ["src/scripts/*"],
       "@ui/*": ["./src/components/*"],
       "@utils/*": ["./src/utils/*"]
     },

@@ -10,7 +10,7 @@ import {
   PostCategory,
   PostTopic,
   PostTopicsSchema,
-} from 'src/postsApi/postConfig';
+} from './postConfig';
 
 // TODO: create test to verify you don't have 2 or more posts with the same filename / slug
 
@@ -105,17 +105,6 @@ export const sortPostsByDate = (a: Post, b: Post) => {
   return 0;
 };
 
-// GET SLICE OF POSTS
-export const getSliceOfPosts = ({
-  posts,
-  startIndex = 0,
-  numPosts = 10,
-}: {
-  posts: Post[];
-  startIndex?: number;
-  numPosts?: number;
-}) => posts.slice(startIndex, numPosts);
-
 // EXTRACT POST META
 export const extractPostMeta = (post: Post) => post.meta;
 
@@ -125,8 +114,8 @@ export const getAllPostTopicsInUse = (posts: Post[]): PostTopic[] => {
 };
 
 // FILTER POSTS BY TOPIC
-export const filterPostByTopic = (post: Post, topic: PostTopic) =>
-  post.meta.topics.includes(topic);
+// export const filterPostByTopic = (post: Post, topic: PostTopic) =>
+//   post.meta.topics.includes(topic);
 
 // export const filterPostsByTopics = (
 //   posts: Post[],

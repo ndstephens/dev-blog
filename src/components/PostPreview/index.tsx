@@ -1,4 +1,4 @@
-import { PostMeta } from 'src/postsApi/postConfig';
+import { PostMeta } from '@scripts/posts/postConfig';
 
 interface PostPreviewProps {
   postMeta: PostMeta;

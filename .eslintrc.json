@@ -24,7 +24,7 @@
           // Side effect imports
           ["^\\u0000"],
           //* Path aliased
-          ["^@assets", "@config", "@hooks", "@ui", "@utils"],
+          ["^@assets", "@config", "@hooks", "@scripts", "@ui", "@utils"],
           // Absolute imports
           ["^(src|public)(/.*|$)"],
           // Parent imports. Put `..` last
