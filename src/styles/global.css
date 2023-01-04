@@ -27,7 +27,7 @@
   }
 
   :where(body) {
-    @apply bg-surfaceClr-1 text-textClr-1;
+    @apply overscroll-none bg-surfaceClr-1 text-textClr-1;
   }
 
   :where(#__next) {

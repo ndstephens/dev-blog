@@ -108,12 +108,12 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        display: ['"Albert SansVariable"', ...defaultTheme.fontFamily.serif],
+        display: ['OswaldVariable', ...defaultTheme.fontFamily.serif],
         sans: ['ExoVariable', ...defaultTheme.fontFamily.sans],
         mono: ['"Red Hat MonoVariable"', ...defaultTheme.fontFamily.mono],
       },
       spacing: {
-        headerHeight: '48px',
+        headerHeight: '52px',
       },
       colors: {
         textClr: {
@@ -184,11 +184,11 @@ module.exports = {
           '--color-surface-3': asChannels(theme('colors.slate.700')),
           '--color-surface-4': asChannels(theme('colors.slate.600')),
           // PRIMARY
-          '--color-primary-1': asChannels(theme('colors.sky.100')),
-          '--color-primary-3': asChannels(theme('colors.sky.300')),
-          '--color-primary-5': asChannels(theme('colors.sky.500')),
-          '--color-primary-7': asChannels(theme('colors.sky.700')),
-          '--color-primary-9': asChannels(theme('colors.sky.900')),
+          '--color-primary-1': asChannels(theme('colors.cyan.100')),
+          '--color-primary-3': asChannels(theme('colors.cyan.300')),
+          '--color-primary-5': asChannels(theme('colors.cyan.500')),
+          '--color-primary-7': asChannels(theme('colors.cyan.700')),
+          '--color-primary-9': asChannels(theme('colors.cyan.900')),
         },
       });
     }),
