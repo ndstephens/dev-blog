@@ -12,10 +12,10 @@ export default class MyDocument extends Document {
         <Head>
           <meta name="theme-color" content="#f8fafc" />
         </Head>
-        <Script src="/scripts/theme.js" strategy="beforeInteractive" />
         <body>
           <Main />
           <NextScript />
+          <Script src="/scripts/theme.js" strategy="beforeInteractive" />
         </body>
       </Html>
     );
