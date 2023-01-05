@@ -6,9 +6,10 @@ import clsx from 'clsx';
 import { AnimatePresence, motion as m, MotionProps } from 'framer-motion';
 
 import MenuArrowIcon from '@assets/icons/chevron-down.svg';
-import { navMenus } from '@config/animations/menu';
+import { dropDownMenus } from '@config/animations/menu';
 
-const { child, container } = navMenus;
+// animation variants
+const { child, container } = dropDownMenus;
 
 //* =============================================
 //*                NAV-LINK                     =

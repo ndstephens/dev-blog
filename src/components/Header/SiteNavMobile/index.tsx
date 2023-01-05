@@ -6,9 +6,13 @@ import clsx from 'clsx';
 import { AnimatePresence, motion as m } from 'framer-motion';
 
 import MenuIcon from '@assets/icons/menu/menu.svg';
+import { navMobileMenu } from '@config/animations/menu';
 import { blogRoutes, primaryRoutes } from '@config/routes';
 
 import ThemeSelect from '../ThemeSelect';
+
+// animation variants
+const { overlay, panel } = navMobileMenu;
 
 export default function SiteNavMobile() {
   return (
@@ -30,26 +34,26 @@ export default function SiteNavMobile() {
                   static
                   key="nav-overlay"
                   as={m.div}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.17 }}
+                  variants={overlay}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
                   className="fixed inset-0 backdrop-blur-md"
                 />
                 <Popover.Panel
                   static
                   key="nav-panel"
                   as={m.ul}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.7, type: 'spring' }}
+                  variants={panel}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
                   role="list" // for VoiceOver in Safari
                   className="fixed top-6 right-6 flex w-[calc(100vw-3rem)] max-w-xs flex-col rounded-md bg-surfaceClr-3 px-6 py-4"
                 >
                   {({ close }) => (
                     <>
-                      <NavItem className="py-2">Blog</NavItem>
+                      <NavItem className="py-2">Blog /</NavItem>
                       {blogRoutes.map((route) => (
                         <NavLink
                           key={route.label}
@@ -93,12 +97,14 @@ interface NavItemProps {
 }
 const NavItem = ({ children, className }: NavItemProps) => {
   const { pathname } = useRouter();
-  const isActivePage = pathname.startsWith(`/${children.toLocaleLowerCase()}`);
+  const isActivePage = pathname.startsWith(
+    `/${children.split(' ')[0]?.toLocaleLowerCase()}`
+  );
 
   return (
     <li
       className={clsx(
-        `flex items-center ${className}`,
+        `flex items-center transition-colors ${className}`,
         isActivePage ? 'text-textClr-1' : 'text-textClr-3'
       )}
     >

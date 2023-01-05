@@ -1,10 +1,11 @@
 import { Listbox } from '@headlessui/react';
 import { AnimatePresence, motion as m } from 'framer-motion';
 
-import { navMenus } from '@config/animations/menu';
+import { dropDownMenus } from '@config/animations/menu';
 import { themeOptionsList, useTheme, useThemeIcons } from '@hooks/useTheme';
 
-const { child, container } = navMenus;
+// animation variants
+const { child, container } = dropDownMenus;
 
 interface ThemeSelectProps {
   className?: string;
