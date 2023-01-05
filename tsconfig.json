@@ -15,11 +15,11 @@
     "paths": {
       // Add these to eslint file under simple-import-sort
       "@assets/*": ["./src/assets/*"],
-      "@config/*": ["./src/config/*"],
-      "@hooks/*": ["./src/hooks/*"],
-      "@scripts/*": ["src/scripts/*"],
+      "@config/*": ["./src/lib/config/*"],
+      "@hooks/*": ["./src/lib/hooks/*"],
+      "@scripts/*": ["src/lib/scripts/*"],
       "@ui/*": ["./src/components/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@utils/*": ["./src/lib/utils/*"]
     },
     "resolveJsonModule": true,
     "skipLibCheck": true,

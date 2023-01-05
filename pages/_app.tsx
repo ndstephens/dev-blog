@@ -7,7 +7,7 @@ import { MotionConfig } from 'framer-motion';
 import { AppLayout } from '@ui/AppLayout';
 
 // import ErrorBoundary from '@ui/ErrorBoundary';
-import { printWebVitalMetric } from 'src/webMetrics';
+import { printWebVitalMetric } from 'src/lib/webMetrics';
 
 // Font imports
 import '@fontsource/oswald/variable.css';
