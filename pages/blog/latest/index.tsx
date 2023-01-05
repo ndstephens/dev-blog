@@ -14,11 +14,7 @@ import {
   getAllPostTopicsInUse,
   sortPostsByDate,
 } from '@scripts/posts';
-import {
-  PostMeta,
-  PostTopic,
-  PostTopicsSchema,
-} from '@scripts/posts/postConfig';
+import { PostMeta, PostTopic, PostTopicsSchema } from '@scripts/posts/types';
 import PageContentWrapper from '@ui/PageLayout/PageContentWrapper';
 import PageHeader from '@ui/PageLayout/PageHeader';
 import { numClamp } from '@utils/numbers';

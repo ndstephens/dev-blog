@@ -1,4 +1,4 @@
-import type { PostMeta } from '@scripts/posts/postConfig';
+import type { PostMeta } from '@scripts/posts/types';
 import type { GetStaticProps, InferGetStaticPropsType } from 'next';
 
 // import PostPreview from '@ui/PostPreview';

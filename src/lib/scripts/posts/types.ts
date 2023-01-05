@@ -1,8 +1,8 @@
 import { z } from 'zod';
 
-/* =============================================
-                  CONFIG
-============================================= */
+//* =============================================
+//*                ZOD SCHEMAS                  =
+//*==============================================
 export const PostCategoriesSchema = z.enum(['articles', 'notes', 'snippets']);
 
 export const PostTopicsSchema = z.enum([
@@ -34,9 +34,9 @@ const PostSchema = z.object({
   meta: PostMetaSchema,
 });
 
-/* =============================================
-                  TYPES
-============================================= */
+//* =============================================
+//*                   TYPES                     =
+//*==============================================
 export type PostCategory = z.infer<typeof PostCategoriesSchema>;
 
 export type PostTopic = z.infer<typeof PostTopicsSchema>;

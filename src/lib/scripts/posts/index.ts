@@ -10,7 +10,7 @@ import {
   PostCategory,
   PostTopic,
   PostTopicsSchema,
-} from './postConfig';
+} from './types';
 
 // TODO: create test to verify you don't have 2 or more posts with the same filename / slug
 
