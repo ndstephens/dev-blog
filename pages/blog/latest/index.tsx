@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import { useIsClient } from 'usehooks-ts';
 import { z } from 'zod';
 
+import { POSTS_PER_PAGE } from '@config/pages';
 // import PostPreview from '@ui/PostPreview';
 import {
   extractPostMeta,
@@ -17,56 +18,35 @@ import {
 import { PostMeta, PostTopic, PostTopicsSchema } from '@scripts/posts/types';
 import PageContentWrapper from '@ui/PageLayout/PageContentWrapper';
 import PageHeader from '@ui/PageLayout/PageHeader';
+import Pagination from '@ui/Pagination';
 import { numClamp } from '@utils/numbers';
+import { validateOptionalQueryParam } from '@utils/url';
 
 //* =============================================
 //*              UTIL FUNCTIONS                 =
 //*==============================================
-const verifyTopicParam = (topicParam: unknown) => {
-  const topicParamSchema = PostTopicsSchema.optional();
-  const result = topicParamSchema.safeParse(topicParam);
-  return result.success ? result.data : undefined;
-};
-
-const verifyPageParam = (pageParam: unknown) => {
-  const pageParamSchema = z.coerce.number().optional();
-  const result = pageParamSchema.safeParse(pageParam);
-  return result.success ? result.data : undefined;
-};
-
 const getPostsAndPages = (
   postsMeta: PostMeta[],
   topicParam: string | undefined,
   pageParam: number | undefined,
-  numPostsPerPage: number
+  numPostsPerPage: number = POSTS_PER_PAGE
 ) => {
-  const allPostsOfTopic = postsMeta.filter((postMeta) =>
+  const postsAboutTopic = postsMeta.filter((postMeta) =>
     !topicParam ? true : postMeta.topics.includes(topicParam as PostTopic)
   );
-  const maxNumOfPages = Math.ceil(allPostsOfTopic.length / numPostsPerPage);
-  const page = !pageParam
+  const maxNumOfPages = Math.ceil(postsAboutTopic.length / numPostsPerPage);
+  const currentPage = !pageParam
     ? 1
     : numClamp(Math.floor(pageParam), 1, maxNumOfPages);
 
-  // console.log('allPosts:', allPostsOfTopic);
-  // console.log('topicParam:', topicParam);
-  // console.log('pageParam:', pageParam);
-  // console.log('numPostsPerPage:', numPostsPerPage);
-  // console.log('maxNumPages:', maxNumOfPages);
-  // console.log('page:', page);
-
-  const startIndex = (page - 1) * numPostsPerPage;
+  const startIndex = (currentPage - 1) * numPostsPerPage;
   const endIndex = startIndex + numPostsPerPage;
 
-  // console.log('start:', startIndex);
-
-  const posts = allPostsOfTopic.slice(startIndex, endIndex);
-
-  // console.log('posts', posts);
+  const posts = postsAboutTopic.slice(startIndex, endIndex);
 
   return {
     posts,
-    page,
+    currentPage,
     maxNumOfPages,
   };
 };
@@ -81,17 +61,20 @@ export default function BlogLatestPage({
   const isClient = useIsClient();
   const { isReady, pathname, query } = useRouter();
 
-  const topicParam = verifyTopicParam(query?.topic);
-  const pageParam = verifyPageParam(query?.page);
+  const topicParam = validateOptionalQueryParam(query?.topic, PostTopicsSchema);
+  const pageParam = validateOptionalQueryParam(query?.page, z.coerce.number());
 
-  const { posts, page, maxNumOfPages } =
+  const { posts, currentPage, maxNumOfPages } =
     isClient && isReady
-      ? getPostsAndPages(postsMeta, topicParam, pageParam, 10)
-      : { posts: [], page: 1, maxNumOfPages: 1 };
+      ? getPostsAndPages(postsMeta, topicParam, pageParam, 1)
+      : { posts: [], currentPage: 1, maxNumOfPages: 1 };
 
-  // TODO: use zod to verify that query.topic is a string, try to break url
+  const paginationHref = topicParam
+    ? `${pathname}/?topic=${topicParam}&page=`
+    : `${pathname}/?page=`;
+
   // TODO: implement pagination with basic UI
-  // TODO: refactor all this logic into a custom hook
+  // TODO: refactor all this logic into a custom hook ??
 
   return (
     <>
@@ -100,6 +83,11 @@ export default function BlogLatestPage({
           <h1 className="font-serif text-7xl tracking-wide text-textClr-1">
             Latest:
           </h1>
+          <Pagination
+            currentPage={currentPage}
+            maxNumOfPages={maxNumOfPages}
+            href={paginationHref}
+          />
         </PageHeader>
       </PageContentWrapper>
       <PageContentWrapper>
