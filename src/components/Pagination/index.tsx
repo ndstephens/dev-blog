@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import clsx from 'clsx';
 
@@ -24,6 +24,7 @@ interface PaginationProps {
   siblingCount?: number;
   showLimitButtons?: boolean;
   showIncrementButtons?: boolean;
+  className?: string;
 }
 
 export default function Pagination({
@@ -34,6 +35,7 @@ export default function Pagination({
   siblingCount = 1,
   showLimitButtons = true,
   showIncrementButtons = true,
+  className,
 }: PaginationProps) {
   if (maxNumOfPages === 1) return null;
 
@@ -45,8 +47,8 @@ export default function Pagination({
   });
 
   return (
-    <nav aria-label="Pagination">
-      <ul role="list" className="flex list-none items-center">
+    <nav aria-label="Pagination" className={className}>
+      <ul role="list" className="flex list-none text-sm">
         {pageList.map((item) => {
           if (
             (showLimitButtons || showIncrementButtons) &&
@@ -59,7 +61,6 @@ export default function Pagination({
                   type={item}
                   currentPage={currentPage}
                   maxNumOfPages={maxNumOfPages}
-                  disabled={[1, maxNumOfPages].includes(currentPage)}
                   href={href}
                 />
               </li>
@@ -67,7 +68,7 @@ export default function Pagination({
           } else {
             return (
               <li key={item}>
-                <PageLink label={item} currentPage={currentPage} href={href} />
+                <PageLink page={item} currentPage={currentPage} href={href} />
               </li>
             );
           }
@@ -77,94 +78,105 @@ export default function Pagination({
   );
 }
 
-// wrapper maybe has a top and bottom border
-// children will be li's
-// each child will have similar padding
-// each will have an "onClick" handler
-// each will have a disabled prop
-// each will update its color and cursor if disabled
-// each will otherwise update color on hover
-// Page buttons will update color if active page
-
-// RANGE BUTTON
+//* =============================================
+//*                RANGE BUTTON                 =
+//*==============================================
 interface RangeLinkProps {
   type: string;
   currentPage: number;
   maxNumOfPages: number;
-  disabled: boolean;
   href: string;
 }
-function RangeLink({
-  type,
-  currentPage,
-  maxNumOfPages,
-  disabled,
-  href,
-}: RangeLinkProps) {
+function RangeLink({ type, currentPage, maxNumOfPages, href }: RangeLinkProps) {
+  const router = useRouter();
+
   // TODO: could use better type safety and error checking
   const getIcon = (type: string) => {
     switch (type) {
       case FIRST_PAGE: {
-        return [FirstIcon, 'First page', 1];
+        return [FirstIcon, 'First page', 1, currentPage === 1];
       }
       case PREV_PAGE: {
-        return [PrevIcon, 'Previous page', currentPage - 1];
+        return [PrevIcon, 'Previous page', currentPage - 1, currentPage === 1];
       }
       case NEXT_PAGE: {
-        return [NextIcon, 'Next page', currentPage + 1];
+        return [
+          NextIcon,
+          'Next page',
+          currentPage + 1,
+          currentPage === maxNumOfPages,
+        ];
       }
       case LAST_PAGE: {
-        return [LastIcon, 'Last page', maxNumOfPages];
+        return [
+          LastIcon,
+          'Last page',
+          maxNumOfPages,
+          currentPage === maxNumOfPages,
+        ];
       }
       default:
         return;
     }
   };
-  const [Icon, label, page] = getIcon(type) as [any, string, number];
+  const [Icon, label, page, isDisabled] = getIcon(type) as [
+    any,
+    string,
+    number,
+    boolean
+  ];
 
   return (
-    <Link
-      href={`${href}${page}`}
+    <button
+      type="button"
+      disabled={isDisabled}
+      onClick={() => router.push(`${href}${page}`)}
       className={clsx(
-        'rounded-full p-2 transition-colors hocus-within:bg-surfaceClr-2',
-        !disabled && 'text-textClr-1',
-        disabled && 'cursor-default text-textClr-3'
+        'mx-[3px] flex aspect-square w-8 items-center justify-center rounded-full transition-colors ',
+        !isDisabled && 'text-textClr-1 hocus-within:bg-surfaceClr-3',
+        isDisabled && 'text-textClr-3'
       )}
     >
-      <a>
-        <span className="sr-only">{label}</span>
-        <Icon aria-hidden className="w-4" />
-      </a>
-    </Link>
+      <span className="sr-only">{label}</span>
+      <Icon aria-hidden className="w-[20px]" />
+    </button>
   );
 }
 
-// PAGE BUTTON
+//* =============================================
+//*                PAGE BUTTON                  =
+//*==============================================
 interface PageLinkProps {
-  label: number | string;
+  page: number | string;
   currentPage: number;
   href: string;
 }
-function PageLink({ label, currentPage, href }: PageLinkProps) {
-  // TODO: what on page load when there is no "page" query-string, but you're on page-1 b/c there's more than 1 page
-  const isActivePage = label === currentPage;
+function PageLink({ page, currentPage, href }: PageLinkProps) {
+  const router = useRouter();
+
+  const isActivePage = page === currentPage;
 
   if (
-    typeof label === 'string' &&
-    [START_ELLIPSIS, END_ELLIPSIS].includes(label)
+    typeof page === 'string' &&
+    [START_ELLIPSIS, END_ELLIPSIS].includes(page)
   ) {
-    return <span className="p-2 pt-4 text-textClr-1">...</span>;
+    return (
+      <span className="mx-[3px] flex aspect-square w-8 items-end justify-center pb-[5px] text-textClr-1">
+        ...
+      </span>
+    );
   }
 
   return (
-    <Link
-      href={`${href}${label}`}
+    <button
+      type="button"
+      onClick={() => router.push(`${href}${page}`)}
       className={clsx(
-        'rounded-full p-2 tabular-nums text-textClr-1 transition-colors hocus-within:bg-surfaceClr-2',
-        isActivePage && 'bg-surfaceClr-2'
+        'mx-[3px] flex aspect-square w-8 items-center justify-center rounded-full text-textClr-1 transition-colors hocus-within:bg-surfaceClr-3',
+        isActivePage && 'bg-surfaceClr-3'
       )}
     >
-      <a>{label}</a>
-    </Link>
+      {page}
+    </button>
   );
 }
