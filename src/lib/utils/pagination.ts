@@ -1,3 +1,40 @@
+import type { PostMeta, PostTopic } from '@scripts/posts/types';
+
+import { POSTS_PER_PAGE } from '@config/pages';
+import { numClamp } from '@utils/numbers';
+
+//* =============================================
+//*         GET POSTS FOR CURRENT PAGE          =
+//*==============================================
+export const getPostsAndPages = (
+  postsMeta: PostMeta[],
+  topicParam: string | undefined,
+  pageParam: number | undefined,
+  numPostsPerPage: number = POSTS_PER_PAGE
+) => {
+  const postsAboutTopic = postsMeta.filter((postMeta) =>
+    !topicParam ? true : postMeta.topics.includes(topicParam as PostTopic)
+  );
+  const maxNumOfPages = Math.ceil(postsAboutTopic.length / numPostsPerPage);
+  const currentPage = !pageParam
+    ? 1
+    : numClamp(Math.floor(pageParam), 1, maxNumOfPages);
+
+  const startIndex = (currentPage - 1) * numPostsPerPage;
+  const endIndex = startIndex + numPostsPerPage;
+
+  const posts = postsAboutTopic.slice(startIndex, endIndex);
+
+  return {
+    posts,
+    currentPage,
+    maxNumOfPages,
+  };
+};
+
+//* =============================================
+//*       FOR CREATING THE PAGINATION UI        =
+//*==============================================
 export const FIRST_PAGE = 'First';
 export const PREV_PAGE = 'Previous';
 export const NEXT_PAGE = 'Next';
