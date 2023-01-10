@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "lint:tsc": "tsc --noEmit",
     "lint:eslint": "eslint . --ext js,jsx,ts,tsx,md,mdx --ignore-path .gitignore --fix",
     "format": "prettier . --ignore-path .gitignore -wu",
     "test": "echo 'setup tests'",
@@ -16,6 +17,7 @@
     "singleQuote": true
   },
   "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "tsc --noEmit",
     "*.{js,jsx,ts,tsx,md,mdx}": "eslint --fix",
     "*": "prettier -wu"
   },
