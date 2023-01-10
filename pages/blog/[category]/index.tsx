@@ -1,4 +1,8 @@
-import type { GetStaticProps, InferGetStaticPropsType } from 'next';
+import type {
+  GetStaticPaths,
+  GetStaticProps,
+  InferGetStaticPropsType,
+} from 'next';
 
 import React from 'react';
 import Link from 'next/link';
@@ -7,13 +11,20 @@ import { useRouter } from 'next/router';
 import { useIsClient } from 'usehooks-ts';
 import { z } from 'zod';
 
+import { blogRoutes } from '@config/routes';
 import {
   extractPostMeta,
   getAllPosts,
+  getAllPostsByCategory,
   getAllPostTopicsInUse,
   sortPostsByDate,
 } from '@scripts/posts';
-import { PostMeta, PostTopic, PostTopicsSchema } from '@scripts/posts/types';
+import {
+  PostCategory,
+  PostMeta,
+  PostTopic,
+  PostTopicsSchema,
+} from '@scripts/posts/types';
 import PageBody from '@ui/PageLayout/PageBody';
 import PageHeader from '@ui/PageLayout/PageHeader';
 import Pagination from '@ui/Pagination';
@@ -34,7 +45,7 @@ export default function BlogLatestPage({
   const { posts, currentPage, maxNumOfPages } =
     isClient && isReady
       ? // TODO: remove "1" for num of posts per page
-        getPostsAndPages(postsMeta, topicParam, pageParam, 1)
+        getPostsAndPages(postsMeta, topicParam, pageParam)
       : { posts: [], currentPage: 1, maxNumOfPages: 1 };
 
   const paginationHref = topicParam
@@ -91,13 +102,35 @@ export default function BlogLatestPage({
 //* =============================================
 //*            DATA FETCHING                    =
 //*==============================================
+// PATHS
+export const getStaticPaths: GetStaticPaths = async () => {
+  const categories = blogRoutes
+    .map((route) => route.label.toLowerCase())
+    .map((category) => ({
+      params: { category },
+    }));
+
+  return {
+    paths: categories,
+    fallback: false,
+  };
+};
+
+// PROPS
 interface StaticProps {
   postsMeta: PostMeta[];
   postTopics: PostTopic[];
 }
 
-export const getStaticProps: GetStaticProps<StaticProps> = async () => {
-  const allPosts = await getAllPosts();
+export const getStaticProps: GetStaticProps<StaticProps> = async ({
+  params,
+}) => {
+  // TODO: validate response data using zod
+  const category = params?.category as PostCategory | 'latest';
+  const allPosts =
+    category === 'latest'
+      ? await getAllPosts()
+      : await getAllPostsByCategory(category);
   const sortedPosts = allPosts.sort(sortPostsByDate);
   const postsMeta = sortedPosts.map(extractPostMeta);
 

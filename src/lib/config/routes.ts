@@ -1,3 +1,4 @@
+// TODO: should be typed using PostCategories
 export const blogRoutes = [
   {
     label: 'Latest',
