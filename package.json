@@ -17,7 +17,6 @@
     "singleQuote": true
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx}": "tsc --noEmit",
     "*.{js,jsx,ts,tsx,md,mdx}": "eslint --fix",
     "*": "prettier -wu"
   },

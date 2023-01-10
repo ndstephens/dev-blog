@@ -5,10 +5,10 @@ interface Props {
   className?: string;
 }
 
-export default function PageHeader({ children, className }: Props) {
+export default function PageBody({ children, className }: Props) {
   return (
-    <PageSectionWrapper className={className}>
-      <header className="pt-24 pb-12">{children}</header>
+    <PageSectionWrapper className={`flex-1 ${className}`}>
+      {children}
     </PageSectionWrapper>
   );
 }

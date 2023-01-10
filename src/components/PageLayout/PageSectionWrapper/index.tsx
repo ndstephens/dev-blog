@@ -2,15 +2,12 @@ import MaxWidthWrapper from '@ui/shared/MaxWidthWrapper';
 
 interface Props {
   children: React.ReactNode;
-  bgColor?: string;
+  className?: string;
 }
 
-export default function PageContentWrapper({
-  children,
-  bgColor = 'bg-surfaceClr-1',
-}: Props) {
+export default function PageSectionWrapper({ children, className }: Props) {
   return (
-    <div className={bgColor}>
+    <div className={className}>
       <MaxWidthWrapper intent="page">{children}</MaxWidthWrapper>
     </div>
   );

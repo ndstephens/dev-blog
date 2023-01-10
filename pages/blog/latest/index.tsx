@@ -14,7 +14,7 @@ import {
   sortPostsByDate,
 } from '@scripts/posts';
 import { PostMeta, PostTopic, PostTopicsSchema } from '@scripts/posts/types';
-import PageContentWrapper from '@ui/PageLayout/PageContentWrapper';
+import PageBody from '@ui/PageLayout/PageBody';
 import PageHeader from '@ui/PageLayout/PageHeader';
 import Pagination from '@ui/Pagination';
 import { getPostsAndPages } from '@utils/pagination';
@@ -33,7 +33,8 @@ export default function BlogLatestPage({
 
   const { posts, currentPage, maxNumOfPages } =
     isClient && isReady
-      ? getPostsAndPages(postsMeta, topicParam, pageParam, 1)
+      ? // TODO: remove "1" for num of posts per page
+        getPostsAndPages(postsMeta, topicParam, pageParam, 1)
       : { posts: [], currentPage: 1, maxNumOfPages: 1 };
 
   const paginationHref = topicParam
@@ -42,20 +43,14 @@ export default function BlogLatestPage({
 
   return (
     <>
-      <PageContentWrapper bgColor="bg-surfaceClr-2">
-        <PageHeader>
-          <h1 className="font-serif text-7xl tracking-wide text-textClr-1">
-            Latest:
-          </h1>
-          <Pagination
-            currentPage={currentPage}
-            maxNumOfPages={maxNumOfPages}
-            href={paginationHref}
-          />
-        </PageHeader>
-      </PageContentWrapper>
-      <PageContentWrapper>
-        <section className="pt-8 pb-8">
+      <PageHeader className="bg-surfaceClr-2">
+        <h1 className="font-serif text-7xl tracking-wide text-textClr-1">
+          Latest:
+        </h1>
+      </PageHeader>
+
+      <PageBody className="bg-surfaceClr-1">
+        <section className="py-8">
           <ul>
             {postTopics.map((postTopic) => (
               <li key={postTopic}>
@@ -75,13 +70,20 @@ export default function BlogLatestPage({
           <ul>
             {posts.map((post) => (
               <li key={post.title}>
-                {/* <PostPreview post={post} /> */}
                 <pre>{JSON.stringify(post, null, 2)}</pre>
               </li>
             ))}
           </ul>
         </section>
-      </PageContentWrapper>
+
+        <div className="flex justify-center pb-8">
+          <Pagination
+            currentPage={currentPage}
+            maxNumOfPages={maxNumOfPages}
+            href={paginationHref}
+          />
+        </div>
+      </PageBody>
     </>
   );
 }

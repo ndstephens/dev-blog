@@ -42,6 +42,11 @@
     @apply select-none;
   }
 
+  pre {
+    /* @apply overflow-x-hidden; */
+    @apply whitespace-pre-wrap;
+  }
+
   /** OVERRIDE TAILWIND PREFLIGHT */
   button,
   select {
