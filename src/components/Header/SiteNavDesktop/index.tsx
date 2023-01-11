@@ -16,8 +16,8 @@ export default function SiteNavDesktop() {
       >
         <NavItemWithSubMenu label="Blog" menuItems={blogRoutes} />
         {primaryRoutes.map((route) => (
-          <NavLink key={route.label} href={route.href}>
-            {route.label}
+          <NavLink key={route.title} href={route.href}>
+            {route.title}
           </NavLink>
         ))}
       </ul>

@@ -1,26 +1,29 @@
 // TODO: should be typed using PostCategories
 export const blogRoutes = [
   {
-    label: 'Latest',
+    title: 'Latest',
     href: '/blog/latest',
+    description: 'All recently published posts',
   },
   {
-    label: 'Notes',
+    title: 'Notes',
     href: '/blog/notes',
+    description: 'Reductions of larger subjects',
   },
   {
-    label: 'Snippets',
+    title: 'Snippets',
     href: '/blog/snippets',
+    description: 'Small bits worth remembering',
   },
 ];
 
 export const primaryRoutes = [
   {
-    label: 'Projects',
+    title: 'Projects',
     href: '/projects',
   },
   {
-    label: 'About',
+    title: 'About',
     href: '/about',
   },
 ];

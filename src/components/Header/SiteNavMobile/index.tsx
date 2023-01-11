@@ -56,22 +56,22 @@ export default function SiteNavMobile() {
                       <NavItem className="py-2">Blog /</NavItem>
                       {blogRoutes.map((route) => (
                         <NavLink
-                          key={route.label}
+                          key={route.title}
                           href={route.href}
                           onClick={close}
                           className="py-2 pl-3"
                         >
-                          {route.label}
+                          {route.title}
                         </NavLink>
                       ))}
                       {primaryRoutes.map((route) => (
                         <NavLink
-                          key={route.label}
+                          key={route.title}
                           href={route.href}
                           onClick={close}
                           className="py-2"
                         >
-                          {route.label}
+                          {route.title}
                         </NavLink>
                       ))}
                       <div className="order-[-1] my-4 border-t-2 border-surfaceClr-1" />

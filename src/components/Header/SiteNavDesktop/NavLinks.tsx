@@ -49,8 +49,9 @@ export const NavLink = ({
 //*==============================================
 interface Props {
   label: string;
+  // TODO: needs to be updated after "blogRoutes" gets properly typed
   menuItems: Array<{
-    label: string;
+    title: string;
     href: string;
   }>;
 }
@@ -89,13 +90,13 @@ export function NavItemWithSubMenu({ label, menuItems }: Props) {
                   <>
                     {menuItems.map((item) => (
                       <NavLink
-                        key={item.label}
+                        key={item.title}
                         variants={child}
                         href={item.href}
                         onClick={close}
                         className="my-2 py-1"
                       >
-                        {item.label}
+                        {item.title}
                       </NavLink>
                     ))}
                   </>
