@@ -1,4 +1,4 @@
-import { Header } from '@ui/Header';
+import SiteHeader from '@ui/SiteHeader';
 
 interface AppLayoutProps {
   children: React.ReactNode;
@@ -7,7 +7,7 @@ interface AppLayoutProps {
 export function AppLayout({ children }: AppLayoutProps) {
   return (
     <>
-      <Header />
+      <SiteHeader />
       <main className="relative z-[100] flex flex-1 flex-col">{children}</main>
     </>
   );

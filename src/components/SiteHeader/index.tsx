@@ -4,7 +4,7 @@ import Logo from './Logo';
 import SiteNavDesktop from './SiteNavDesktop';
 import SiteNavMobile from './SiteNavMobile';
 
-export function Header() {
+export default function SiteHeader() {
   return (
     <div className="sticky top-0 z-[200] h-[48px] shrink-0 bg-surfaceClr-1 xs:h-[52px]">
       <MaxWidthWrapper intent="siteHeader">
