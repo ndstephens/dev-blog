@@ -29,15 +29,21 @@ import PageBody from '@ui/PageLayout/PageBody';
 import PageHeader from '@ui/PageLayout/PageHeader';
 import Pagination from '@ui/Pagination';
 import { getPostsAndPages } from '@utils/pagination';
+import { capitalizeFirstLetter } from '@utils/strings';
 import { validateOptionalQueryParam } from '@utils/url';
 
 export default function BlogLatestPage({
   postsMeta,
   postTopics,
+  category,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const { title, description } = blogRoutes.find(
+    (page) => category === page.title.toLowerCase()
+  )!;
+
   // TODO: refactor all this logic into a custom hook ??
   const isClient = useIsClient();
-  const { isReady, pathname, query } = useRouter();
+  const { isReady, query } = useRouter();
 
   const topicParam = validateOptionalQueryParam(query?.topic, PostTopicsSchema);
   const pageParam = validateOptionalQueryParam(query?.page, z.coerce.number());
@@ -49,15 +55,21 @@ export default function BlogLatestPage({
       : { posts: [], currentPage: 1, maxNumOfPages: 1 };
 
   const paginationHref = topicParam
-    ? `${pathname}/?topic=${topicParam}&page=`
-    : `${pathname}/?page=`;
+    ? `${category}/?topic=${topicParam}&page=`
+    : `${category}/?page=`;
 
   return (
     <>
-      <PageHeader className="bg-surfaceClr-2">
-        <h1 className="font-serif text-7xl tracking-wide text-textClr-1">
-          Latest:
+      <PageHeader className="bg-surfaceClr-2 tracking-widest text-textClr-1">
+        <h1 className="font-serif text-5xl font-medium">
+          {/* {capitalizeFirstLetter(title)}: */}
+          {title.toLocaleUpperCase()}:
+          <span className="ml-6 text-5xl font-light text-primaryClr">
+            {/* {!!topicParam && topicParam.toLocaleUpperCase()} */}
+            {!!topicParam && capitalizeFirstLetter(topicParam)}
+          </span>
         </h1>
+        <h2 className="mt-4 font-serif text-2xl font-normal">{description}</h2>
       </PageHeader>
 
       <PageBody className="bg-surfaceClr-1">
@@ -68,8 +80,8 @@ export default function BlogLatestPage({
                 <Link
                   href={
                     query?.topic === postTopic
-                      ? pathname
-                      : `${pathname}/?topic=${postTopic}`
+                      ? category
+                      : `${category}/?topic=${postTopic}`
                   }
                 >
                   <a>{postTopic}</a>
@@ -87,11 +99,12 @@ export default function BlogLatestPage({
           </ul>
         </section>
 
-        <div className="flex justify-center pb-8">
+        <div className="flex justify-center">
           <Pagination
             currentPage={currentPage}
             maxNumOfPages={maxNumOfPages}
             href={paginationHref}
+            className="pb-8"
           />
         </div>
       </PageBody>
@@ -105,7 +118,7 @@ export default function BlogLatestPage({
 // PATHS
 export const getStaticPaths: GetStaticPaths = async () => {
   const categories = blogRoutes
-    .map((route) => route.label.toLowerCase())
+    .map((route) => route.title.toLowerCase())
     .map((category) => ({
       params: { category },
     }));
@@ -120,6 +133,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 interface StaticProps {
   postsMeta: PostMeta[];
   postTopics: PostTopic[];
+  category: string;
 }
 
 export const getStaticProps: GetStaticProps<StaticProps> = async ({
@@ -136,6 +150,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async ({
 
   const postTopics = getAllPostTopicsInUse(allPosts);
 
+  // TODO: handle an empty array better
   if (!allPosts) {
     return {
       notFound: true,
@@ -146,6 +161,7 @@ export const getStaticProps: GetStaticProps<StaticProps> = async ({
     props: {
       postsMeta,
       postTopics,
+      category,
     },
   };
 };
