@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import { Popover } from '@headlessui/react';
+import { cva, VariantProps } from 'class-variance-authority';
 import clsx from 'clsx';
 import { AnimatePresence, motion as m, MotionProps } from 'framer-motion';
 
@@ -14,7 +15,22 @@ const { child, container } = dropDownMenus;
 //* =============================================
 //*                NAV-LINK                     =
 //*==============================================
-interface NavLinkProps extends MotionProps {
+const link = cva(
+  'flex items-center px-6 transition-colors aria-[current=page]:text-textClr-1 hocus-within:text-textClr-1',
+  {
+    variants: {
+      intent: {
+        mainMenu: 'h-full',
+        subMenu: 'h-8 my-2',
+      },
+    },
+    defaultVariants: {
+      intent: 'mainMenu',
+    },
+  }
+);
+
+interface NavLinkProps extends MotionProps, VariantProps<typeof link> {
   children: React.ReactNode;
   href: string;
   className?: string;
@@ -25,17 +41,21 @@ export const NavLink = ({
   href,
   className,
   onClick,
+  intent,
   ...motionProps
 }: NavLinkProps) => {
-  const { pathname } = useRouter();
-  const isActivePage = pathname === href;
+  const { pathname, query } = useRouter();
+  const isActivePage =
+    intent === 'subMenu'
+      ? href.endsWith(query?.category as string)
+      : pathname === href;
 
   return (
     <m.li {...motionProps} onClick={onClick} className={className}>
       <Link href={href}>
         <a
           aria-current={isActivePage && 'page'}
-          className="flex h-full items-center px-6 transition-colors aria-[current=page]:text-textClr-1 hocus-within:text-textClr-1"
+          className={link({ intent, className })}
         >
           {children}
         </a>
@@ -57,7 +77,7 @@ interface Props {
 }
 export function NavItemWithSubMenu({ label, menuItems }: Props) {
   const { pathname } = useRouter();
-  const isActivePage = pathname.startsWith(`/${label.toLocaleLowerCase()}`);
+  const isBtnActivePage = pathname.startsWith(`/${label.toLocaleLowerCase()}`);
 
   return (
     <Popover as="li" className="relative h-full">
@@ -67,7 +87,7 @@ export function NavItemWithSubMenu({ label, menuItems }: Props) {
           <Popover.Button
             className={clsx(
               'flex h-full items-center px-6 transition-colors  hover:text-textClr-1 ui-open:text-textClr-1',
-              isActivePage ? 'text-textClr-1' : 'text-textClr-3'
+              isBtnActivePage ? 'text-textClr-1' : 'text-textClr-3'
             )}
           >
             {label}
@@ -94,7 +114,7 @@ export function NavItemWithSubMenu({ label, menuItems }: Props) {
                         variants={child}
                         href={item.href}
                         onClick={close}
-                        className="my-2 py-1"
+                        intent="subMenu"
                       >
                         {item.title}
                       </NavLink>

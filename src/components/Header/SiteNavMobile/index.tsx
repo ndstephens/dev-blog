@@ -9,7 +9,7 @@ import MenuIcon from '@assets/icons/menu/menu.svg';
 import { navMobileMenu } from '@config/animations/menu';
 import { blogRoutes, primaryRoutes } from '@config/routes';
 
-import ThemeSelect from '../ThemeSelect';
+import ThemeSelectMobile from '../ThemeSelectMobile';
 
 // animation variants
 const { overlay, panel } = navMobileMenu;
@@ -53,13 +53,13 @@ export default function SiteNavMobile() {
                 >
                   {({ close }) => (
                     <>
-                      <NavItem className="py-2">Blog /</NavItem>
+                      <NavItem>Blog /</NavItem>
                       {blogRoutes.map((route) => (
                         <NavLink
                           key={route.title}
                           href={route.href}
                           onClick={close}
-                          className="py-2 pl-3"
+                          className="pl-4"
                         >
                           {route.title}
                         </NavLink>
@@ -69,13 +69,12 @@ export default function SiteNavMobile() {
                           key={route.title}
                           href={route.href}
                           onClick={close}
-                          className="py-2"
                         >
                           {route.title}
                         </NavLink>
                       ))}
                       <div className="order-[-1] my-4 border-t-2 border-surfaceClr-1" />
-                      <ThemeSelect className="order-[-2]" />
+                      <ThemeSelectMobile className="order-[-2]" />
                     </>
                   )}
                 </Popover.Panel>
@@ -104,7 +103,7 @@ const NavItem = ({ children, className }: NavItemProps) => {
   return (
     <li
       className={clsx(
-        `flex items-center transition-colors ${className}`,
+        `my-2 flex h-8 items-center transition-colors ${className}`,
         isActivePage ? 'text-textClr-1' : 'text-textClr-3'
       )}
     >
@@ -123,15 +122,15 @@ interface NavLinkProps {
   onClick?: () => void;
 }
 const NavLink = ({ children, href, className, onClick }: NavLinkProps) => {
-  const { pathname } = useRouter();
-  const isActivePage = pathname === href;
+  const { query } = useRouter();
+  const isActivePage = href.endsWith(query?.category as string);
 
   return (
-    <li onClick={onClick} className={className}>
+    <li onClick={onClick} className={`my-2 ${className}`}>
       <Link href={href}>
         <a
           aria-current={isActivePage && 'page'}
-          className="flex items-center transition-colors aria-[current=page]:text-textClr-1 hocus-within:text-textClr-1"
+          className="flex h-8 items-center transition-colors aria-[current=page]:text-textClr-1 hocus-within:text-textClr-1"
         >
           {children}
         </a>

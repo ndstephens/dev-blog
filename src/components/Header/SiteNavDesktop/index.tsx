@@ -1,6 +1,6 @@
 import { blogRoutes, primaryRoutes } from '@config/routes';
 
-import ThemeSelect from '../ThemeSelect';
+import ThemeSelectDesktop from '../ThemeSelectDesktop';
 
 import { NavItemWithSubMenu, NavLink } from './NavLinks';
 
@@ -21,7 +21,7 @@ export default function SiteNavDesktop() {
           </NavLink>
         ))}
       </ul>
-      <ThemeSelect />
+      <ThemeSelectDesktop />
     </nav>
   );
 }
