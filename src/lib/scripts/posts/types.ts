@@ -11,7 +11,7 @@ export const PostTopicsSchema = z.enum([
   'css',
   'git',
   'javascript',
-  'next',
+  'next.js',
   'performance',
   'react',
   'state',
