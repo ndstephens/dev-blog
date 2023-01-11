@@ -10,9 +10,10 @@ import { AppLayout } from '@ui/AppLayout';
 import { printWebVitalMetric } from 'src/lib/webMetrics';
 
 // Font imports
-import '@fontsource/oswald/variable.css';
+import '@fontsource/bitter/variable.css';
 import '@fontsource/exo/variable.css';
 import '@fontsource/exo/variable-italic.css';
+import '@fontsource/oswald/variable.css';
 import '@fontsource/red-hat-mono/variable.css';
 // Tailwind CSS import
 import 'src/styles/global.css';

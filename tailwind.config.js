@@ -108,8 +108,9 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        display: ['OswaldVariable', ...defaultTheme.fontFamily.serif],
+        display: ['OswaldVariable', ...defaultTheme.fontFamily.sans],
         sans: ['ExoVariable', ...defaultTheme.fontFamily.sans],
+        serif: ['BitterVariable', ...defaultTheme.fontFamily.serif],
         mono: ['"Red Hat MonoVariable"', ...defaultTheme.fontFamily.mono],
       },
       spacing: {
