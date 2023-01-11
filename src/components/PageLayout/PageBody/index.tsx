@@ -1,4 +1,4 @@
-import PageSectionWrapper from '@ui/PageLayout/PageSectionWrapper';
+import MaxWidthWrapper from '@ui/shared/MaxWidthWrapper';
 
 interface Props {
   children: React.ReactNode;
@@ -7,8 +7,10 @@ interface Props {
 
 export default function PageBody({ children, className }: Props) {
   return (
-    <PageSectionWrapper className={`flex-1 ${className}`}>
-      {children}
-    </PageSectionWrapper>
+    <div className={`flex flex-1 flex-col ${className}`}>
+      <MaxWidthWrapper intent="pageBody" className="flex-1">
+        {children}
+      </MaxWidthWrapper>
+    </div>
   );
 }

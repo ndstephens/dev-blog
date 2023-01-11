@@ -1,4 +1,4 @@
-import PageSectionWrapper from '@ui/PageLayout/PageSectionWrapper';
+import MaxWidthWrapper from '@ui/shared/MaxWidthWrapper';
 
 interface Props {
   children: React.ReactNode;
@@ -7,8 +7,10 @@ interface Props {
 
 export default function PageHeader({ children, className }: Props) {
   return (
-    <PageSectionWrapper className={className}>
-      <header className="pt-24 pb-12">{children}</header>
-    </PageSectionWrapper>
+    <div className={className}>
+      <MaxWidthWrapper>
+        <header className="pt-24 pb-12">{children}</header>
+      </MaxWidthWrapper>
+    </div>
   );
 }
