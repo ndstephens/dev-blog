@@ -83,19 +83,19 @@ export default function BlogLatestPage({
         bgColor="bg-surfaceClr-1"
         className="flex flex-1 flex-col justify-between py-12"
       >
-        <div className="grid grid-cols-[1fr,320px] items-start gap-x-24">
-          <section className="grid gap-y-12">
-            {posts.map((post) => (
-              <PostPreview key={post.slug} post={post} />
-            ))}
-          </section>
+        <div className="grid max-md:gap-y-16 md:grid-cols-[2fr,1fr] md:items-start md:gap-x-24 md:[grid-template-areas:'posts_filter']">
           <TopicsFilter
             currentTopic={topicParam}
             topics={postTopics}
             category={category}
+            className="md:sticky md:top-[100px] md:[grid-area:filter]"
           />
+          <section className="grid gap-y-12 md:[grid-area:posts]">
+            {posts.map((post) => (
+              <PostPreview key={post.slug} post={post} />
+            ))}
+          </section>
         </div>
-        {/* PAGINATION */}
         <div className="mt-8 flex justify-center">
           <Pagination
             currentPage={currentPage}
@@ -131,7 +131,6 @@ interface StaticProps {
   postTopics: PostTopic[];
   category: PostCategory | 'latest';
 }
-
 export const getStaticProps: GetStaticProps<StaticProps> = async ({
   params,
 }) => {

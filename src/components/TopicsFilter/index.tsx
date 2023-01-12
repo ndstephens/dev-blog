@@ -10,15 +10,17 @@ interface TopicsFilterProps {
   currentTopic: PostTopic | undefined;
   topics: PostTopic[];
   category: PostCategory | 'latest';
+  className?: string;
 }
 
 export default function TopicsFilter({
   currentTopic,
   topics,
   category,
+  className,
 }: TopicsFilterProps) {
   return (
-    <div className="sticky top-[100px]">
+    <div className={className}>
       <h2 className="text-lg font-semibold uppercase tracking-wider text-primaryClr">
         Filter by Topic
       </h2>
