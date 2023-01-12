@@ -34,9 +34,9 @@
     @apply isolate flex flex-col;
   }
 
-  :where(h1, h2, h3, h4, h5, h6) {
+  /* :where(h1, h2, h3, h4, h5, h6) {
     @apply font-display;
-  }
+  } */
 
   :where(button, nav *) {
     @apply select-none;

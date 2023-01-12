@@ -10,13 +10,13 @@ export default function HomePage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      <PageHeader className="bg-surfaceClr-2">
+      <PageHeader bgColor="bg-surfaceClr-2">
         <h1 className="font-serif text-7xl font-bold tracking-wide text-textClr-1">
           Hello
         </h1>
       </PageHeader>
 
-      <PageBody className="bg-surfaceClr-1">
+      <PageBody bgColor="bg-surfaceClr-1">
         <section className="py-8">
           <ul>
             {postsMeta.map((postMeta) => (

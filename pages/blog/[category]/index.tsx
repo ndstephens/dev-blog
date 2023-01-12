@@ -5,12 +5,12 @@ import type {
 } from 'next';
 
 import React from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 import { useIsClient } from 'usehooks-ts';
 import { z } from 'zod';
 
+import ChevronRightIcon from '@assets/icons/chevron-right.svg';
 import { blogRoutes } from '@config/routes';
 import {
   extractPostMeta,
@@ -28,6 +28,8 @@ import {
 import PageBody from '@ui/PageLayout/PageBody';
 import PageHeader from '@ui/PageLayout/PageHeader';
 import Pagination from '@ui/Pagination';
+import PostPreview from '@ui/Post/PostPreview';
+import TopicsFilter from '@ui/TopicsFilter';
 import { getPostsAndPages } from '@utils/pagination';
 import { capitalizeFirstLetter } from '@utils/strings';
 import { validateOptionalQueryParam } from '@utils/url';
@@ -37,7 +39,7 @@ export default function BlogLatestPage({
   postTopics,
   category,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  const { title, description } = blogRoutes.find(
+  const { title, brief } = blogRoutes.find(
     (page) => category === page.title.toLowerCase()
   )!;
 
@@ -50,8 +52,7 @@ export default function BlogLatestPage({
 
   const { posts, currentPage, maxNumOfPages } =
     isClient && isReady
-      ? // TODO: remove "1" for num of posts per page
-        getPostsAndPages(postsMeta, topicParam, pageParam)
+      ? getPostsAndPages(postsMeta, topicParam, pageParam)
       : { posts: [], currentPage: 1, maxNumOfPages: 1 };
 
   const paginationHref = topicParam
@@ -60,51 +61,46 @@ export default function BlogLatestPage({
 
   return (
     <>
-      <PageHeader className="bg-surfaceClr-2 tracking-widest text-textClr-1">
-        <h1 className="font-serif text-5xl font-medium">
-          {/* {capitalizeFirstLetter(title)}: */}
-          {title.toLocaleUpperCase()}:
-          <span className="ml-6 text-5xl font-light text-primaryClr">
-            {/* {!!topicParam && topicParam.toLocaleUpperCase()} */}
-            {!!topicParam && capitalizeFirstLetter(topicParam)}
-          </span>
+      <PageHeader
+        bgColor="bg-surfaceClr-2"
+        className="tracking-widest text-textClr-1"
+      >
+        <h1 className="flex font-serif text-5xl font-medium">
+          {title.toLocaleUpperCase()}
+          {!!topicParam && (
+            <>
+              <ChevronRightIcon className="mx-4 w-[42px]" />
+              <span className="font-normal text-primaryClr-3">
+                {capitalizeFirstLetter(topicParam)}
+              </span>
+            </>
+          )}
         </h1>
-        <h2 className="mt-4 font-serif text-2xl font-normal">{description}</h2>
+        <h2 className="mt-4 font-serif text-2xl font-light">{brief}</h2>
       </PageHeader>
 
-      <PageBody className="bg-surfaceClr-1">
-        <section className="py-8">
-          <ul>
-            {postTopics.map((postTopic) => (
-              <li key={postTopic}>
-                <Link
-                  href={
-                    query?.topic === postTopic
-                      ? category
-                      : `${category}/?topic=${postTopic}`
-                  }
-                >
-                  <a>{postTopic}</a>
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <br />
-          <ul>
+      <PageBody
+        bgColor="bg-surfaceClr-1"
+        className="flex flex-1 flex-col justify-between py-12"
+      >
+        <div className="grid grid-cols-[1fr,320px] items-start gap-x-24">
+          <section className="grid gap-y-12">
             {posts.map((post) => (
-              <li key={post.title}>
-                <pre>{JSON.stringify(post, null, 2)}</pre>
-              </li>
+              <PostPreview key={post.slug} post={post} />
             ))}
-          </ul>
-        </section>
-
-        <div className="flex justify-center">
+          </section>
+          <TopicsFilter
+            currentTopic={topicParam}
+            topics={postTopics}
+            category={category}
+          />
+        </div>
+        {/* PAGINATION */}
+        <div className="mt-8 flex justify-center">
           <Pagination
             currentPage={currentPage}
             maxNumOfPages={maxNumOfPages}
             href={paginationHref}
-            className="pb-8"
           />
         </div>
       </PageBody>
@@ -133,7 +129,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 interface StaticProps {
   postsMeta: PostMeta[];
   postTopics: PostTopic[];
-  category: string;
+  category: PostCategory | 'latest';
 }
 
 export const getStaticProps: GetStaticProps<StaticProps> = async ({

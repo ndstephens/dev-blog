@@ -1,14 +1,15 @@
 import MaxWidthWrapper from '@ui/shared/MaxWidthWrapper';
 
 interface Props {
-  children: React.ReactNode;
+  bgColor: string;
   className?: string;
+  children: React.ReactNode;
 }
 
-export default function PageBody({ children, className }: Props) {
+export default function PageBody({ bgColor, className, children }: Props) {
   return (
-    <div className={`flex flex-1 flex-col ${className}`}>
-      <MaxWidthWrapper intent="pageBody" className="flex-1">
+    <div className={`flex flex-1 flex-col ${bgColor}`}>
+      <MaxWidthWrapper intent="pageBody" className={className}>
         {children}
       </MaxWidthWrapper>
     </div>

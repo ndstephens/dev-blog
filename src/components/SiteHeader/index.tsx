@@ -6,7 +6,7 @@ import SiteNavMobile from './SiteNavMobile';
 
 export default function SiteHeader() {
   return (
-    <div className="sticky top-0 z-[200] h-[48px] shrink-0 bg-surfaceClr-1 xs:h-[52px]">
+    <div className="sticky top-0 z-[200] h-headerHeightMobile shrink-0 bg-surfaceClr-1 xs:h-headerHeight">
       <MaxWidthWrapper intent="siteHeader">
         <header className="flex h-full items-center">
           <Logo />

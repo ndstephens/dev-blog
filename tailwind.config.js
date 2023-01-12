@@ -115,6 +115,7 @@ module.exports = {
       },
       spacing: {
         headerHeight: '52px',
+        headerHeightMobile: '48px',
       },
       colors: {
         textClr: {
